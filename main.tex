@@ -61,11 +61,7 @@
 
 %% Title, author and affiliations section
 \titlebox{
-    \title{The Very Long and Technical Title of Your Super Interesting Study Which Will Save the World}  
-    
-    \author{Mike Morrison, Rafael Bailo and Daniel Bradford}
-    
-    \institution{Optional Institution Under Name}
+    \title{A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs}  
     }
 % End of title stuff
     
@@ -94,7 +90,19 @@
 % Bottom box with QR code
 \bottombox{
     %% QR code
-    \qrcode[height=10cm]{https://arxiv.org/abs/2402.05674}
+    \qrcodecommand{https://arxiv.org/abs/2402.05674}{
+
+    Kasimir Tanner
+    \newline
+    Matteo Vilucchio
+    \newline
+    Bruno Loureiro
+    \newline
+    Florent Krzakala
+    \newline
+
+}
+}{
     % Comment out the line below out to hide logo
     \hfill\bottomboxlogo{Assets/EPFL_Logo_Digital_RGB_PROD.png} % \hfill shifts the logo across so it meets the right hand side margin
     % Note that \bottomboxlogo takes an optional width argument. It defaults to the following: 
@@ -102,7 +110,6 @@
     % where \textwidth is actually the width of a minipage which is defined in the \bottombox command of
     % betterportaitposter.cls It's a standard \includegraphics command in there, so easy to change if 
     % you need to add a border etc.
-    
 }
 % End of bottom box
 

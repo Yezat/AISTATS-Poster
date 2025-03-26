@@ -193,17 +193,15 @@
 
 
 % Begin \bottombox command
-\newcommand{\bottombox}[1]{\vfill
+\newcommand{\bottombox}[2]{\vfill
     \noindent\colorbox{\maincolumnbackgroundcolor}{
         \begin{minipage}[c][\bottomboxheight][c]{\textwidth}
             \centering
             \begin{minipage}{0.9\textwidth}    
-                \vfill{
-                
-                    \fontsizesection\color{\maincolumnfontcolor}
-                    #1
-                }
-            
+                \fontsizesection\color{\maincolumnfontcolor}
+                \begin{tabular}{p{0.42\textwidth} @{\hspace{5cm}} p{0.5\textwidth}}
+                    #1 & #2 \\
+                \end{tabular}
             \end{minipage}
         \end{minipage}
             
@@ -223,19 +221,14 @@
 
 
 %% QR code
-\newcommand{\qrcode}[3]{
-    \begin{minipage}[c]{0.12\textwidth}
-        \includegraphics[height=0.8\bottomboxheight]{#1}
-    \end{minipage}%
-    \begin{minipage}[c]{0.12\textwidth}
-        \hfill
-        \includegraphics[height=0.7\bottomboxheight]{#2}
-        % Smartphone icon
-        % Author: Freepik
-        % Retrieved from: https://www.flaticon.com/free-icon/smartphone_65680
+\newcommand{\qrcodecommand}[2]{
+    \begin{minipage}[c]{0.15\textwidth}
+        \vspace{0.5em}
+        \qrcode[height=10cm]{#1}
     \end{minipage}%
     \begin{minipage}[c]{0.36\textwidth}
-        #3
+        \vspace{1.5em}
+        #2
     \end{minipage}%
 } 
 % End \qrcode command
