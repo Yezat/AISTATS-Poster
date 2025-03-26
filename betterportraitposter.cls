@@ -140,14 +140,12 @@
 %% TEMPLATE COMMANDS
 
 % Begin \mainfinding command
-\newcommand{\mainfinding}[2]{%
+\newcommand{\mainfinding}[1]{%
     \noindent\colorbox{\maincolumnbackgroundcolor}{%
         \begin{minipage}[c][\mainfindingheight][c]{\textwidth}
             \centering
             \fontsizemain\color{\maincolumnfontcolor} 
-            \begin{tabular}{p{0.42\textwidth} @{\hspace{5cm}} p{0.42\textwidth}}
-                #1 & #2 \\
-            \end{tabular}
+            #1
         \end{minipage}
     }
 }
