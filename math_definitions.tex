@@ -1,0 +1,121 @@
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\erfc}{erfc}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% partitin function
+\newcommand{\Zbeta}{\ensuremath{\mathcal{Z}_\beta}}
+
+\newcommand{\sign}{\ensuremath{\operatorname{sign}}}
+
+% attack metrics
+\newcommand{\advtrainingcost}{\ensuremath{\varepsilon_t}}
+\newcommand{\advgencost}{\ensuremath{\varepsilon_g}}
+
+% error metrics
+\newcommand{\generr}{\ensuremath{E_{\mathrm{gen}}}}
+\newcommand{\bounderr}{\ensuremath{E_{\mathrm{bnd}}}}
+\newcommand{\trainerr}{\ensuremath{E_{\mathrm{train}}}}
+\newcommand{\trainloss}{\ensuremath{\ell_{\mathrm{train}}}}
+\newcommand{\advgenerr}{\ensuremath{E_{\mathrm{adv}}}}
+\newcommand{\classpresgenerr}{\ensuremath{E_{\mathrm{CP}}}}
+\newcommand{\usefulmetric}{\ensuremath{\mathcal{U}}}
+\newcommand{\robustmetric}{\ensuremath{\mathcal{R}}}
+
+% ERM definitions
+\newcommand{\OptAttack}{\ensuremath{ \frac{\varepsilon_t \w^\top \Sigmadelta \w}{\sqrt{d} \sqrt{\w^\top \w}}}}
+\newcommand{\RawPrediction}{\ensuremath{\frac{\boldsymbol{x}_\mu^\top \w }{\sqrt{d}}}}
+
+% Covariances definitons
+\newcommand{\Sigmaw}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{w}}}}
+\newcommand{\Sigmax}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{\boldsymbol{x}}}}}
+\newcommand{\Sigmadelta}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{\delta}}}}
+\newcommand{\Sigmaupsilon}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{\upsilon}}}}
+% \newcommand{\Sigmadeltainv}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{\delta}}^{-1}}}
+\newcommand{\Sigmatheta}{\ensuremath{\boldsymbol{\Sigma}_{\boldsymbol{\theta}}}}
+
+% w's definitions
+\newcommand{\w}{\ensuremath{\boldsymbol{\theta}}}
+\newcommand{\x}{\ensuremath{\boldsymbol{x}}}
+\newcommand{\wavec}{\ensuremath{\boldsymbol{\theta}^a}}
+% \newcommand{\wstar}{\ensuremath{\boldsymbol{w}^\star}}
+\newcommand{\what}{\ensuremath{\hat{\boldsymbol{\theta}}}}
+\newcommand{\wstar}{\ensuremath{\boldsymbol{\theta}_0}}
+\newcommand{\vecdelta}{\ensuremath{\boldsymbol{\delta}}}
+\newcommand{\singleattack}{\ensuremath{\boldsymbol{v}}}
+
+% indices
+\newcommand{\datidx}{\ensuremath{i}}
+\newcommand{\blockidx}{\ensuremath{\ell}}
+
+
+% proximal and moreau
+\newcommand{\proxim}[3]{\ensuremath{\mathcal{P}_{#1}\qty[#2]\qty(#3)}}
+\newcommand{\Dproxim}[3]{\ensuremath{\mathcal{P}^\prime_{#1}\qty[#2]\qty(#3)}}
+\newcommand{\moreau}[3]{\ensuremath{\mathcal{M}_{#1}\qty[#2]\qty(#3)}}
+\newcommand{\Dmoreau}[3]{\ensuremath{\mathcal{M}^\prime_{#1}\qty[#2]\qty(#3)}}
+
+
+\newcommand{\gaussdist}[2]{\ensuremath{\mathcal{N}\qty(#1, #2)}}
+
+\newcommand{\outputfun}{\ensuremath{f_{\mathrm{out}}}}
+\newcommand{\priorfun}{\ensuremath{f_{\mathrm{w}}}}
+
+\newcommand{\pout}[1]{\ensuremath{P_{\mathrm{out}}\qty(#1)}}
+\newcommand{\poutbayes}[1]{\ensuremath{P_{\mathrm{out}^\star}\qty(#1)}}
+\newcommand{\Zout}{\ensuremath{\mathcal{Z}_{\mathrm{out}}}}
+\newcommand{\Zoutstar}{\ensuremath{\mathcal{Z}_{\mathrm{out}^\star}}}
+\newcommand{\Zw}{\ensuremath{\mathcal{Z}_{\mathrm{w}}}}
+\newcommand{\Zwstar}{\ensuremath{\mathcal{Z}_{\mathrm{w}^\star}}}
+\newcommand{\fout}{\ensuremath{f_{\mathrm{out}}}}
+\newcommand{\foutstar}{\ensuremath{f_{\mathrm{out}^\star}}}
+\newcommand{\fw}{\ensuremath{f_{\mathrm{w}}}}
+\newcommand{\fwstar}{\ensuremath{f_{\mathrm{w}^\star}}}
+
+ 
+\newcommand{\PP}[1]{\ensuremath{\mathbb{P}\qty(#1)}}
+\newcommand{\EE}[1]{\ensuremath{\mathbb{E}\qty[#1]}}
+\newcommand{\EEb}[2]{\ensuremath{\mathbb{E}_{#1}\qty[#2]}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+
+\newcommand{\din}{\ensuremath{\Delta_{\text{\tiny{IN}}}}}
+\newcommand{\dout}{\ensuremath{\Delta_{\text{\tiny{OUT}}}}}
+\newcommand{\deff}{\ensuremath{\Delta_{\text{eff}}}}
+
+\newcommand{\zetain}{\ensuremath{\zeta_{\text{\tiny{IN}}}}}
+\newcommand{\zetaout}{\ensuremath{\zeta_{\text{\tiny{OUT}}}}}
+
+\newcommand{\chiin}{\ensuremath{\chi_{\text{\tiny{IN}}}}}
+\newcommand{\chiout}{\ensuremath{\chi_{\text{\tiny{OUT}}}}}
+
+\newcommand{\lambdaout}{\ensuremath{\lambda_{\text{\tiny{OUT}}}}}
+\newcommand{\lambdaopt}{\ensuremath{\lambda_{\mathrm{opt}}}}
+
+\newcommand{\zetainzero}{\ensuremath{\zeta_{\text{\tiny{IN}},0}}}
+\newcommand{\zetaoutzero}{\ensuremath{\zeta_{\text{\tiny{OUT}},0}}}
+
+\newcommand{\ginzero}{\ensuremath{g_{\text{\tiny{IN}},0}}}
+\newcommand{\goutzero}{\ensuremath{g_{\text{\tiny{OUT}},0}}}
+
+\newcommand{\yin}{\ensuremath{y_{\text{\tiny{IN}}}}}
+\newcommand{\yout}{\ensuremath{y_{\text{\tiny{OUT}}}}}
+\newcommand{\ystar}{\ensuremath{y^\star}}
+
+\newcommand{\losshuber}[1]{{\ell^{\rm Huber}_{#1}}}
+
+
+\newcommand{\aopt}{\ensuremath{a_{\text{\tiny{opt}}}}}
+\newcommand{\aoptzero}{\ensuremath{a_{\text{\tiny{opt}},0}}}
+
+
+
+\newcommand{\isEquivTo}[1]{\ensuremath{\underset{#1}{\simeq}}}
+
+\newcommand{\Egen}{\ensuremath{E_{\mathrm{gen}}}}
+\newcommand{\Egenbest}{\ensuremath{E_{\mathrm{gen}}^{\mathrm{best}}}}
+\newcommand{\Eest}{\ensuremath{E_{\mathrm{estim}}}}
+\newcommand{\excessEgen}{\ensuremath{E_{\mathrm{gen}}^{\mathrm{excess}}}}
+\newcommand{\Etrain}{\ensuremath{E_{\mathrm{train}}}}
+
+\newcommand{\ntest}{\ensuremath{n_{\mathrm{t}}}}
+
+\newcommand{\qb}{\ensuremath{q_{\mathrm{b}}}}
