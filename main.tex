@@ -5,6 +5,40 @@
 \usepackage{lipsum}
 \usepackage{qrcode} % QR code generation
 
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\usepackage{enumitem}
+
+\usepackage{color}
+\usepackage{float}
+\usepackage[style=base]{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools,bbm}
+\usepackage{physics}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage[pdftex,colorlinks=true,citecolor=blue]{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{xfrac}
+\usepackage{graphicx}
+\usepackage{authblk}
+
 %%%% Uncomment the following commands to customise the format
 
 %% Setting the height of the top and bottom (colored) bars
@@ -44,7 +78,7 @@
 % \definecolor{UoGBurgundy}{RGB}{125, 35, 57}
 % \renewcommand{\maincolumnbackgroundcolor}{UoGBurgundy}
 
-
+\input{math_definitions.tex}
 
 
 \begin{document}	
@@ -67,16 +101,73 @@
     
     
 %% Central box with traditional content
-\centerbox{\begin{multicols}{3}
+\centerbox{
+\begin{multicols}{3}
 
+\section{Empirical Misk Minimization}
+
+\begin{equation}\label{eq:modified-minimisation-problem}
+    \sum_{\datidx = 1}^{n} 
+    g \qty(
+        y_\datidx \frac{\w^\top \x_\datidx}{\sqrt{d}} 
+        - \advtrainingcost \frac{\sqrt{\w^\top \Sigmadelta \w}}{\sqrt{d}} 
+    ) 
+    + r(\w) \,.
+\end{equation}
+
+\subsection{Block Features}
+
+\begin{equation}
+\begin{aligned}
+   \Sigmax &= \operatorname{blockdiag}\qty( \psi_1 \mathbb{1}_{d_1}, \dots, \psi_k \mathbb{1}_{d_k} ) \,, \\
+   \Sigmadelta &= \operatorname{blockdiag}\qty( \Delta_1 \mathbb{1}_{d_1}, \dots, \Delta_k \mathbb{1}_{d_k} ) \,, \\
+   \Sigmaupsilon &= \operatorname{blockdiag}\qty( \Upsilon_1 \mathbb{1}_{d_1},  \dots, \Upsilon_k \mathbb{1}_{d_k} ) \,, \\
+   \Sigmatheta &= \operatorname{blockdiag}\qty( t_1 \mathbb{1}_{d_1}, \dots, t_k \mathbb{1}_{d_k} ) \,,
+\end{aligned}
+\end{equation}
+
+\subsection{Usefulness and robustness}
+\begin{align}
+   \usefulmetric_{\wstar}
+   &= \frac{1}{\sqrt{d}} \mathbb{E}_{\x, y}[y \wstar^\top \x ] \,, \label{eq:mt-usefulness-def} \\
+   \robustmetric_{\wstar} &= \frac{1}{\sqrt{d}} \EEb{\x, y}{
+       \inf_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}}  \leq \advgencost} y \wstar^\top ( \x + \vecdelta)
+   }\,. \label{eq:mt-robustness-def}
+\end{align}
+
+\section{Main Theorem}
+
+
+
+\section{Trade-Offs}
+
+
+\includegraphics[width=0.2\textwidth]{Assets/feature_combinations_alpha_sweep.pdf}
+
+
+\subsection{Directional Defences and structured data}
+
+\includegraphics[width=0.2\textwidth]{Assets/defence_sweep.pdf}
+
+
+\subsection{Tradeoff directions and innocuous directions}
+
+
+\includegraphics[width=0.2\textwidth]{Assets/optimal_defense.pdf}
+
+
+\subsection{Data Dependent Regularisation}
+
+\includegraphics[width=0.2\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
+
+
+\includegraphics[width=0.2\textwidth]{Assets/effective_regularisation.pdf}
+
+\section{Acknowledgements}
 
 
 \columnbreak
-
-
-
 \columnbreak
-
 
 
 
