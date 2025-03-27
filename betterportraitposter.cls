@@ -163,7 +163,7 @@
 \newcommand{\titlebox}[1]{
     \centering
     \begin{minipage}{0.9\textwidth}
-        \vspace{1em}
+        % \vspace{1em}
             #1
     \end{minipage}
 }
@@ -176,7 +176,8 @@
     \fontsizestandard\noindent\colorbox{\columnbackgroundcolor}{
         \noindent\hrulefill\par
         \noindent\makebox[\textwidth][c]{%
-        \begin{minipage}[c][\centerboxheight][c]{0.9\textwidth}
+        % \begin{minipage}[t][\centerboxheight][t]{0.9\textwidth}
+        \begin{minipage}[t]{0.9\textwidth} 
             \vspace{2em}
             \fontsizestandard\color{\columnfontcolor}
                 #1
@@ -194,7 +195,7 @@
 % Begin \bottombox command
 \newcommand{\bottombox}[2]{\vfill
     \noindent\colorbox{\maincolumnbackgroundcolor}{
-        \begin{minipage}[c][\bottomboxheight][c]{\textwidth}
+        \begin{minipage}[t][\bottomboxheight][t]{\textwidth}
             \centering
             \begin{minipage}{0.9\textwidth}    
                 \fontsizesection\color{\maincolumnfontcolor}
@@ -248,7 +249,7 @@
 
 %% Section command
 \renewcommand{\section}[1]{
-    \vspace{2em}
+    \vspace{1em}
     {\fontsizesection\selectfont
     \textbf{\leavevmode
     #1
@@ -258,7 +259,8 @@
 
 %% Subsection command
 \renewcommand{\subsection}[1]{
-    \vspace{2em}{\fontsizesubsection\selectfont
+    \vspace{1em}
+    {\fontsizesubsection\selectfont
     \textbf{\leavevmode
     #1
     }}

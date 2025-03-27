@@ -55,7 +55,7 @@
 %% Setting the height of the top and bottom (colored) bars
 %% Uncomment either of the following lines it you want to change the defaults heights of the top or bottom bars.
 \setlength{\mainfindingheight}{0.12\paperheight} % Top bar
-\setlength{\centerboxheight}{0.71\paperheight} % Central box
+\setlength{\centerboxheight}{0.77\paperheight} % Central box
 \setlength{\bottomboxheight}{0.1\paperheight} % Bottom bar
 
 %% Setting the page margin
@@ -242,6 +242,26 @@ The function \(f(\xi;\vartheta)\) is positive \(\forall \vartheta, \forall \xi \
 \includegraphics[width=0.2\textwidth]{Assets/feature_combinations_alpha_sweep.pdf}
 
 
+We notice that the values for \(\generr\) and \(\bounderr\) change by varying the usefulness and robustness of the features for fixed types of attacks. 
+Intuitively, we have that the more usefulness one has the less generalisation error one makes, indeed we can write a lower bound for the generalisation error
+\begin{equation}\label{eq:bound-gen-error}
+    \generr
+    \geq
+    \frac{1}{\pi} \arccos( \sqrt{\frac{\pi}{2 \rho}} \usefulmetric_{\wstar} ) \,. 
+\end{equation}
+We note that \(\rho\) and \(\usefulmetric_{\wstar}\) only depend on \(\Sigmax\) and \(\wstar\).
+
+Robustness only affects the boundary error. 
+High robustness implies less sensibility to adversarial attacks: robust features have less samples within an attack range of the student decision boundary. 
+The highest value that the boundary error can achieve is limited by both the robustness and the usefulness as
+\begin{align} \label{eq:bound-boundary-error}
+    \bounderr \leq & \  
+    2 \mathrm{T}\qty( \advgencost \mathcal{A} \, \mathcal{B}, \mathcal{A}^{-1} ) - \frac{1}{\pi} \arctan( \mathcal{A}^{-1} ) \nonumber\\ 
+    & - \frac{1}{\pi} \erf\qty( \frac{\advgencost \mathcal{B}}{\sqrt{2}} ) \erfc\qty( \frac{\advgencost \mathcal{A} \, \mathcal{B}}{\sqrt{2}} ) \,,
+\end{align}
+where \(\mathcal{B} = \max_i \sqrt{(\Sigmaupsilon)_{ii} / (\Sigmax)_{ii}}\), \(\mathcal{A} = \sqrt{\pi} \usefulmetric_{\wstar} / \sqrt{2 \rho}\) and \(\mathrm{T}\) is the Owen function. This previous bound is a decreasing function of the robustness.
+
+
 \subsection{Directional Defences and structured data}
 
 \includegraphics[width=0.2\textwidth]{Assets/defence_sweep.pdf}
@@ -266,12 +286,15 @@ The function \(f(\xi;\vartheta)\) is positive \(\forall \vartheta, \forall \xi \
 
 
 
+\columnbreak
+
 \end{multicols}
-
 }
+
+
+
+
 % End of central box
-
-
 
 % Bottom box with QR code
 \bottombox{
