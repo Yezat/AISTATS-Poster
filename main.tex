@@ -39,6 +39,17 @@
 \usepackage{graphicx}
 \usepackage{authblk}
 
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
 %%%% Uncomment the following commands to customise the format
 
 %% Setting the height of the top and bottom (colored) bars
@@ -136,8 +147,84 @@
 \end{align}
 
 \section{Main Theorem}
+For the ERM estimator of the risk function with \(\ell_2\) regularisation \(r(\w) = \frac{\lambda}{2} \norm{\w}_2^2\) and \(\lambda \geq 0\), under the data model defined in \cref{sec:setting-specification} and in the high dimensional proportional limit, the generalisation error \(\generr\) and the boundary error \(\bounderr\) concentrate to
+\begin{align}
+    \generr &= \frac{1}{\pi} \arccos \qty( 
+    {
+        m / \sqrt{ (\rho + \tau^2) q}
+    } 
+    ) \,, \\
+    % \advgenerr &= \generr +  
+    \bounderr &= \!
+    % \int_{0}^{\advgencost \frac{A}{\sqrt{q}\sqrt{N}}} 
+    \int_{0}^{\advgencost \frac{\sqrt{A}}{\sqrt{q}}} \!\!\!\!
+    {\textstyle
+        \erfc\left( \frac{ -\frac{m}{\sqrt{q}} \nu}{\sqrt{2 \qty(\rho + \tau^2 - m^2 / q)}} \right) 
+        \!\! \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} \dd{\nu}
+    }
+    % \mathcal{D}_1 \qty[\nu] 
+    \label{eq:adv-error-theorem-overlap} \,, 
+\end{align}
+and the adversarial generalisation error concentrates to \(\advgenerr = \generr + \bounderr\).
 
+The values of \(m\) and \(q\) are the solutions of a system of eight self-consistent equations for the unknowns \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\).
+The first four equations are dependant on the loss function \(g\) and the adversarial training strength \(\advtrainingcost\) and read
+\begin{equation}\label{eq:saddle-point-channel-main-thm}
+    \begin{cases}
+        \hat{m} = \alpha \mathbb{E}_{\xi}\left[
+            \int_{\RR} \dd{y} \partial_\omega \mathcal{Z}_0 f_g(y, \sqrt{q} \xi, P)
+        \right] \\
+        \hat{q} = \alpha \mathbb{E}_{\xi}\left[
+            \int_{\RR} \dd{y} \mathcal{Z}_0 f_g^2(y, \sqrt{q} \xi, P)
+        \right] \\
+        \hat{V} = -\alpha \mathbb{E}_{\xi}\left[
+            \int_{\RR} \dd{y} \mathcal{Z}_0 \partial_\omega f_g(y, \sqrt{q} \xi, P)
+        \right] \\
+        \hat{P} = - \frac{\advtrainingcost}{2 \sqrt{P}} \alpha \mathbb{E}_{\xi} \qty[ 
+            \int_{\RR} \dd{y} y \mathcal{Z}_0 f_g (y, \sqrt{q} \xi, P)
+        ] 
+    \end{cases} \,,
+\end{equation}
+where \(\xi \sim \gaussdist{0}{1}\) and 
+\(\mathcal{Z}_{0} = \nicefrac{1}{2} \erfc(\nicefrac{- y \omega}{ \sqrt{2(V + \tau^2)}})\) and \(f_{g}(y, \omega, V, P) = \qty(\mathcal{P}(\omega) - \omega) / V\), where \(\mathcal{P}\) is the following proximal operator
+\begin{equation}
+    \mathcal{P} (\omega) = \min_x \qty[\frac{(x - \omega)^2}{2 V} + g(yx - \advtrainingcost \sqrt{P})] \,.
+\end{equation}
+The second set of equation depend on the spectral distribution of the matrices \(\Sigmax, \Sigmadelta\) and on the limiting distribution of the elements of \(\bar{\boldsymbol{\theta}}\). The equations read
+\begin{equation}\label{eq:saddle-point-prior-main-thm}
+    \begin{cases}
+        m = \mathbb{E}_{\mu} \qty[ 
+            \frac{\hat{m} \bar{\theta}^2}{\lambda + \hat{V} \omega + \hat{P} \delta} 
+        ] \\
+        q = \mathbb{E}_{\mu} \qty[ 
+            \frac{
+                \hat{m}^2 \bar{\theta}^2 \omega + \hat{q} \omega^2
+            }{
+                (\lambda + \hat{V} \omega + \hat{P} \delta)^2
+            } 
+        ] \\
+        V = \mathbb{E}_{\mu} \qty[ 
+            \frac{\omega}{\lambda + \hat{V} \omega + \hat{P} \delta } 
+        ] \\
+        P = \mathbb{E}_{\mu} \qty[ 
+            \zeta \frac{
+                \hat{m}^2 \bar{\theta}^2 + \hat{q} \omega^2
+            }{
+                (\lambda + \hat{V} \omega + \hat{P} \delta)^2
+            } 
+        ] 
+    \end{cases}\,.
+\end{equation}
+The value of \(A\) can be obtained from the solution of the same system of self consistent equations as
+\begin{equation}
+    A = \! \mathbb{E}_{\mu} \! \qty[ 
+    {\textstyle
+        \upsilon \frac{\hat{m}^2 \bar{\theta}^2 \omega + \hat{q} \omega^2}{(\lambda + \hat{V} \omega + \hat{P} \delta)^2} 
+    }
+    ] \,.
+\end{equation}
 
+\columnbreak
 
 \section{Trade-Offs}
 
@@ -166,7 +253,7 @@
 \section{Acknowledgements}
 
 
-\columnbreak
+
 \columnbreak
 
 
