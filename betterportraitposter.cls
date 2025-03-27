@@ -85,10 +85,13 @@
 
 %% Poster lengths
 \newlength{\mainfindingheight}
-\setlength{\mainfindingheight}{0.35\paperheight}
+\setlength{\mainfindingheight}{0.12\paperheight}
 
-\newlength{\marginvertical}
-\setlength{\marginvertical}{0.07\paperheight}
+\newlength{\centerboxheight}
+\setlength{\centerboxheight}{0.7\paperheight}
+
+% \newlength{\marginvertical}
+% \setlength{\marginvertical}{0.07\paperheight}
 
 \newlength{\bottomboxheight}
 \setlength{\bottomboxheight}{0.1\paperheight}
@@ -173,18 +176,15 @@
     \fontsizestandard\noindent\colorbox{\columnbackgroundcolor}{
         \noindent\hrulefill\par
         \noindent\makebox[\textwidth][c]{%
-            \begin{minipage}{0.9\textwidth}
-                \vspace{2em}
-                \vfill{
-                
-                    \fontsizestandard\color{\columnfontcolor}
-                    #1
-                    
-                }
-                \vspace{2em}
-            
-            \end{minipage}
+        \begin{minipage}[c][\centerboxheight][c]{0.9\textwidth}
+            \vspace{2em}
+            \fontsizestandard\color{\columnfontcolor}
+                #1
+            \vspace{2em}
+        
+        \end{minipage}
         }
+
     }
 }
 % End \centerbox command
@@ -248,7 +248,8 @@
 
 %% Section command
 \renewcommand{\section}[1]{
-    \vspace{2em}{\fontsizesection\selectfont
+    \vspace{2em}
+    {\fontsizesection\selectfont
     \textbf{\leavevmode
     #1
     }}
