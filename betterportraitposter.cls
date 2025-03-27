@@ -100,12 +100,13 @@
 
 %%%% SIZING OPTIONS
 
-\newcommand{\fontsizestandard}{\fontsize{32.00}{50.50} \selectfont}
+\newcommand{\fontsizestandard}{\fontsize{32.00}{50.5} \selectfont}
 \newcommand{\fontsizemain}{\fontsize{116.00}{220.00} \selectfont}
 \newcommand{\fontsizetitle}{\fontsize{80.00}{120.00} \selectfont}
-\newcommand{\fontsizeauthor}{\fontsize{48.00}{68.00} \selectfont}
-\newcommand{\fontsizeinstitution}{\fontsize{48.00}{68.00} \selectfont}
-\newcommand{\fontsizesection}{\fontsize{48.00}{68.00} \selectfont}
+\newcommand{\fontsizeauthor}{\fontsize{48.00}{10.00} \selectfont}
+\newcommand{\fontsizeinstitution}{\fontsize{48.00}{10.00} \selectfont}
+\newcommand{\fontsizesection}{\fontsize{48.00}{1.00} \selectfont}
+\newcommand{\fontsizesubsection}{\fontsize{40.00}{1.00} \selectfont}
 
 \DeclareOption{a2paper}{
 \geometry{a2paper}
@@ -253,6 +254,15 @@
     }}\\[0.5em]
 }
 % End \section command
+
+%% Subsection command
+\renewcommand{\subsection}[1]{
+    \vspace{2em}{\fontsizesubsection\selectfont
+    \textbf{\leavevmode
+    #1
+    }}\\[0.5em]
+}
+% End \subsection command
 
 %% Title command
 \renewcommand{\title}[1]{
