@@ -262,18 +262,85 @@ The highest value that the boundary error can achieve is limited by both the rob
 where \(\mathcal{B} = \max_i \sqrt{(\Sigmaupsilon)_{ii} / (\Sigmax)_{ii}}\), \(\mathcal{A} = \sqrt{\pi} \usefulmetric_{\wstar} / \sqrt{2 \rho}\) and \(\mathrm{T}\) is the Owen function. This previous bound is a decreasing function of the robustness.
 
 
+Under the same setting as \cref{thm:main-theorem-saddle-point-eqs} and considering a BFM with a single type of feature, i.e. \(k=1\) one has that \(\forall \advgencost, \advtrainingcost \geq 0\) for \(\alpha\) big enough 
+exist two positive numbers $M_1, M_2$ such that
+\begin{equation}
+\begin{aligned}
+    \abs{
+        \advgenerr(\advgencost, \advtrainingcost) - \advgenerr(\advgencost,  \advtrainingcost = 0)
+    } & < M_1 / \alpha \,, \\
+    % \to 0 \,, \\
+    \abs{
+        \generr(\advtrainingcost) - \generr(\advtrainingcost = 0)
+    } & < M_2 / \alpha \,,
+    % \to 0 \,.
+\end{aligned}
+\end{equation}
+where \(\advgenerr(\advgencost, \advtrainingcost)\) and \(\generr(\advtrainingcost)\) define the adversarial and generalisation error of \(\what\) trained with \(\advtrainingcost\) and evaluated for \(\advgencost\).
+
 \subsection{Directional Defences and structured data}
+
+Consider the SWFM defined in \cref{sec:strong-weak-feature-model}
+where the defence matrix is 
+\(
+    \Sigmadelta = \operatorname{blockdiag}\qty( 
+        (\Delta_1 + \delta_1 \varrho ) \mathbb{1}_{d_1}, (\Delta_2 + \delta_2 \varrho ) \mathbb{1}_{d_2} 
+    )
+\), 
+with \(\varrho\) the parameter that makes the defence matrix change.
+Assume also that \(\psi_1 > \psi_2\), \(\Delta_2 \psi_1 \geq \Delta_1 \psi_2\) and \(\Upsilon_i = 1\).
+In the \(\alpha\to \infty\) (taken after the \(n,d\to\infty\)) there exists \(\kappa > 0\) such that \(\forall \delta_1 > \kappa\), \(\delta_2 = -\delta_1\) one has that
+\begin{equation}
+\begin{aligned}
+    \bounderr(\varrho) &= \bounderr^0 + \bounderr^1 \varrho + \order{\varrho^2} \,, \\
+    \generr(\varrho) &= \generr^0 + \generr^1 \varrho + \order{\varrho^2} \,,
+\end{aligned}
+\end{equation}
+where \(\generr^1 > 0\), \(\bounderr^1 < 0\) and \(\bounderr^0,\generr^0\) are the errors when \(\varrho =0\).
+Additionally, this leads to an improved value of \(\advgenerr\) at order \(\varrho\) iff the following condition is satisfied
+\vspace{-5pt}
+\begin{equation}
+    {\textstyle
+        \frac{\advgencost}{\sqrt{2}}
+        \erfc\qty( -\frac{\vartheta_0 u_0 \advgencost}{ \sqrt{2-2 \vartheta_0 ^2} }) 
+        < \frac{e^{-\frac{\vartheta_0^2 u_0^2 \advgencost ^2}{2 \left(1-\vartheta_0 ^2\right) } }}{\sqrt{\pi} \sqrt{1-\vartheta_0^2}} \,,
+    }
+\end{equation}
+% \(
+%     \sqrt{\pi} \sqrt{1-\vartheta_0^2} \advgencost  
+%     \erfc\qty( -\vartheta_0 u_0 \advgencost / \sqrt{2-2 \vartheta_0 ^2} ) 
+%     \leq 
+%     \sqrt{2} \exp\qty(\vartheta_0^2 u_0^2 \advgencost ^2 / (2 \left(\vartheta_0 ^2-1\right) ) )
+% \)
+where \(\vartheta_0 = m_0 / \sqrt{\rho q_0}\) and \(u_0 = \sqrt{A_0} / \sqrt{q_0}\) the solution of the problem with \(\varrho = 0\). 
+Notice that for \(\advgencost\) small enough this condition is always verified.
 
 \includegraphics[width=0.2\textwidth]{Assets/defence_sweep.pdf}
 
 
 \subsection{Tradeoff directions and innocuous directions}
-
+We now investigate the effect that different types of geometries have on the trade-off between \(\generr\) and \(\bounderr\). 
+% One can ask what this the effect of the different eigenvectors of \(\Sigmaupsilon\) on the adversarial generalisation error. 
+Depending on the attack geometry \(\Sigmaupsilon\) one can choose different defence geometries \(\Sigmadelta\) and ask if and for which, protection without trade-off is possible. 
+% This question translates to asking if we can minimise \cref{eq:simplified-adv-error-formula} with respect to \(\varkappa = \sqrt{A} / \sqrt{q}\) and \(\vartheta = m / \sqrt{\rho q}\).
+Any attack matrix \(\Sigmaupsilon\) eigenvalues can be split into 
+directions orthogonal to the teacher and directions aligned with the teacher. 
+% where both have very different roles in the adversarial trade-off. 
+\Cref{fig:optimal_defense} (Left) considers the effect of the adversarial training strength \(\advtrainingcost\) on the errors for different choices of matrices \(\Sigmadelta = \Sigmaupsilon\). 
+In the the top we consider matrices whose biggest eigenvalues are orthogonal to the teacher vector and in the bottom one matrices where there is a leading eigenvector in the direction of the teacher.
 
 \includegraphics[width=0.2\textwidth]{Assets/optimal_defense.pdf}
 
 
 \subsection{Data Dependent Regularisation}
+
+The form for the approximate loss in the case of small \(\advtrainingcost\) is
+\begin{equation}\label{eq:equivalent-adversarial-regularisation}
+    \sum_{\datidx = 1}^{n} 
+    g \Big( y_\datidx \frac{\w^\top \x_\datidx}{\sqrt{d}} \Big) 
+    + \tilde{\lambda}_1 \sqrt{\w^\top \Sigmadelta \w} + \tilde{\lambda}_2 \w^\top \Sigmadelta \w
+\end{equation}
+where \(\tilde{\lambda}_1\) and \(\tilde{\lambda}_2\) depend on the model's parameters and perturbed margins of the points that shift sign under perturbation. 
 
 \includegraphics[width=0.2\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
 
@@ -281,6 +348,8 @@ where \(\mathcal{B} = \max_i \sqrt{(\Sigmaupsilon)_{ii} / (\Sigmax)_{ii}}\), \(\
 \includegraphics[width=0.2\textwidth]{Assets/effective_regularisation.pdf}
 
 \section{Acknowledgements}
+
+We thank Lenka Zdeborov\'a for fruitful discussions and insightful ideas regarding a class-preserving error, Lucas Clarte for useful discussions about the relevant literature, Guillaume Dalle for help in with the numerical implementation, Nikolaos Tsilivis for the discussion during the Cargese 2023 Workshop {\it Statistical Physics and Machine Learning back together again}, Pierre Mergny for the always helpful clarifications about Random Matrix Theory, Paul Krzakala for pointing relevant literature on adversarial training, Julia Kempe for the fruitful discussions and Vittorio Erba for rereading of the manuscript. BL acknowledges support from the \textit{Choose France - CNRS AI Rising Talents} program, and FK from the Swiss National Science Foundation grant SNFS OperaGOST  (grant number $200390$).
 
 
 
