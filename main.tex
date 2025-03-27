@@ -224,10 +224,20 @@ The value of \(A\) can be obtained from the solution of the same system of self 
     ] \,.
 \end{equation}
 
-\columnbreak
 
 \section{Trade-Offs}
 
+\begin{equation}
+    \advgenerr = 
+    {
+        \generr(\vartheta, \usefulmetric_{\wstar}) + 
+        \int_{0}^{\advgencost \varkappa } 
+        f(\xi; \vartheta, \usefulmetric_{\wstar}) \dd{\xi}
+    } \,,
+\end{equation}
+where we introduce the variable \(\vartheta = m / \sqrt{\rho q}\) and \(\varkappa = \sqrt{A} / \sqrt{q}\). 
+\(\vartheta\) is the cosine of the angle between the teacher weights \(\wstar\) and the student estimate \(\what\) in the geometry of \(\Sigmax\) and \(\varkappa\) is the norm of \(\what\) under the attack matrix.
+The function \(f(\xi;\vartheta)\) is positive \(\forall \vartheta, \forall \xi \in [0, +\infty)\) and it is strictly increasing in \(\vartheta\) for any fixed \(\xi \in [0,+\infty)\). 
 
 \includegraphics[width=0.2\textwidth]{Assets/feature_combinations_alpha_sweep.pdf}
 
@@ -253,8 +263,6 @@ The value of \(A\) can be obtained from the solution of the same system of self 
 \section{Acknowledgements}
 
 
-
-\columnbreak
 
 
 

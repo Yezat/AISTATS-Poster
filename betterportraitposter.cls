@@ -103,10 +103,10 @@
 \newcommand{\fontsizestandard}{\fontsize{32.00}{50.5} \selectfont}
 \newcommand{\fontsizemain}{\fontsize{116.00}{220.00} \selectfont}
 \newcommand{\fontsizetitle}{\fontsize{80.00}{120.00} \selectfont}
-\newcommand{\fontsizeauthor}{\fontsize{48.00}{10.00} \selectfont}
-\newcommand{\fontsizeinstitution}{\fontsize{48.00}{10.00} \selectfont}
-\newcommand{\fontsizesection}{\fontsize{48.00}{1.00} \selectfont}
-\newcommand{\fontsizesubsection}{\fontsize{40.00}{1.00} \selectfont}
+\newcommand{\fontsizeauthor}{\fontsize{48.00}{50.00} \selectfont}
+\newcommand{\fontsizeinstitution}{\fontsize{48.00}{50.00} \selectfont}
+\newcommand{\fontsizesection}{\fontsize{48.00}{50.00} \selectfont}
+\newcommand{\fontsizesubsection}{\fontsize{40.00}{50.00} \selectfont}
 
 \DeclareOption{a2paper}{
 \geometry{a2paper}
@@ -251,7 +251,7 @@
     \vspace{2em}{\fontsizesection\selectfont
     \textbf{\leavevmode
     #1
-    }}\\[0.5em]
+    }}
 }
 % End \section command
 
@@ -260,7 +260,7 @@
     \vspace{2em}{\fontsizesubsection\selectfont
     \textbf{\leavevmode
     #1
-    }}\\[0.5em]
+    }}
 }
 % End \subsection command
 
