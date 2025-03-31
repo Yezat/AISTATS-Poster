@@ -42,6 +42,10 @@
 %% Graphics package
 \RequirePackage{graphicx}
 
+%% Caption settings
+\RequirePackage[style=base]{caption}
+\captionsetup{font=large,labelfont=large}
+
 %% AMS packages (optional for math and equations)
 % \RequirePackage{amsmath}
 % \RequirePackage{amsfonts}
@@ -110,6 +114,13 @@
 \newcommand{\fontsizeinstitution}{\fontsize{48.00}{50.00} \selectfont}
 \newcommand{\fontsizesection}{\fontsize{48.00}{50.00} \selectfont}
 \newcommand{\fontsizesubsection}{\fontsize{40.00}{50.00} \selectfont}
+\newcommand{\fontsizecaption}{\fontsize{100.00}{40.00} \selectfont}
+
+\newcommand{\postercaption}[1]{
+    \vspace{0.5em}
+    {\fontsize{32}{40}\selectfont\textbf{#1}}
+    \vspace{0.5em}
+}
 
 \DeclareOption{a2paper}{
 \geometry{a2paper}

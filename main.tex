@@ -98,17 +98,19 @@
 %% Top box with main message
 \mainfinding{
 
-    \textbf{Adversarial training} protects the \textbf{non-robust} features. 
-    \newline
-    A \textbf{trade-off} emerges if those features are \textbf{useful}.
+    A High Dimensional Statistical Model for \textbf{Adversarial Training}: Geometry and Trade-Offs
+
+    % \textbf{Adversarial training} protects the \textbf{non-robust} features. 
+    % \newline
+    % A \textbf{trade-off} emerges if those features are \textbf{useful}.
 
 }
 
 
 %% Title, author and affiliations section
-\titlebox{
-    \title{A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs}  
-    }
+% \titlebox{
+%     \title{A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs}  
+%     }
 % End of title stuff
     
 %% Central box with traditional content
@@ -315,7 +317,12 @@ Additionally, this leads to an improved value of \(\advgenerr\) at order \(\varr
 where \(\vartheta_0 = m_0 / \sqrt{\rho q_0}\) and \(u_0 = \sqrt{A_0} / \sqrt{q_0}\) the solution of the problem with \(\varrho = 0\). 
 Notice that for \(\advgencost\) small enough this condition is always verified.
 
-\includegraphics[width=0.2\textwidth]{Assets/defence_sweep.pdf}
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{Assets/defence_sweep.pdf}
+    \includegraphics[width=0.1\textwidth]{Assets/optimal_defense.pdf}
+    \postercaption{TODO add caption}
+\end{center}
+
 
 
 \subsection{Tradeoff directions and innocuous directions}
@@ -329,7 +336,7 @@ directions orthogonal to the teacher and directions aligned with the teacher.
 \Cref{fig:optimal_defense} (Left) considers the effect of the adversarial training strength \(\advtrainingcost\) on the errors for different choices of matrices \(\Sigmadelta = \Sigmaupsilon\). 
 In the the top we consider matrices whose biggest eigenvalues are orthogonal to the teacher vector and in the bottom one matrices where there is a leading eigenvector in the direction of the teacher.
 
-\includegraphics[width=0.2\textwidth]{Assets/optimal_defense.pdf}
+
 
 
 \subsection{Data Dependent Regularisation}
@@ -342,14 +349,15 @@ The form for the approximate loss in the case of small \(\advtrainingcost\) is
 \end{equation}
 where \(\tilde{\lambda}_1\) and \(\tilde{\lambda}_2\) depend on the model's parameters and perturbed margins of the points that shift sign under perturbation. 
 
-\includegraphics[width=0.2\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
-
-
-\includegraphics[width=0.2\textwidth]{Assets/effective_regularisation.pdf}
+\begin{center}
+\includegraphics[width=0.15\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
+\includegraphics[width=0.15\textwidth]{Assets/effective_regularisation.pdf}
+\postercaption{TODO better caption}
+\end{center}
 
 \section{Acknowledgements}
 
-We thank Lenka Zdeborov\'a for fruitful discussions and insightful ideas regarding a class-preserving error, Lucas Clarte for useful discussions about the relevant literature, Guillaume Dalle for help in with the numerical implementation, Nikolaos Tsilivis for the discussion during the Cargese 2023 Workshop {\it Statistical Physics and Machine Learning back together again}, Pierre Mergny for the always helpful clarifications about Random Matrix Theory, Paul Krzakala for pointing relevant literature on adversarial training, Julia Kempe for the fruitful discussions and Vittorio Erba for rereading of the manuscript. BL acknowledges support from the \textit{Choose France - CNRS AI Rising Talents} program, and FK from the Swiss National Science Foundation grant SNFS OperaGOST  (grant number $200390$).
+Bruno Loureiro acknowledges support from the \textit{Choose France - CNRS AI Rising Talents} program, and Florent Krzakala from the Swiss National Science Foundation grant SNFS OperaGOST  (grant number $200390$).
 
 
 
