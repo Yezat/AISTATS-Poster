@@ -51,7 +51,17 @@
 % \RequirePackage{amsfonts}
 % \RequirePackage{amssymb}
 
-
+%% Hyperref settings (must be loaded last)
+\RequirePackage[pdftex,colorlinks=true]{hyperref}
+\hypersetup{
+    linkcolor=white,
+    urlcolor=white,
+    citecolor=white,
+    pdftitle={AISTATS Poster},
+    pdfauthor={Kasimir Tanner, Matteo Vilucchio, Bruno Loureiro, Florent Krzakala},
+    pdfsubject={A High Dimensional Statistical Model for Adversarial Training},
+    pdfkeywords={Adversarial Training, Machine Learning, Statistics}
+}
 
 %%%% Page setup
 
