@@ -61,7 +61,7 @@
 
 %% Changing font sizes
 % Text font
-%\renewcommand{\fontsizestandard}{\fontsize{28}{35} \selectfont}
+\renewcommand{\fontsizestandard}{\fontsize{28}{35} \selectfont}
 % Main column font
 \renewcommand{\fontsizemain}{\fontsize{100}{100} \selectfont}
 % Title font
@@ -97,7 +97,10 @@
 %% Top box with main message
 \mainfinding{
 
-    A High Dimensional Statistical Model for \textbf{Adversarial Training}: Geometry and Trade-Offs
+    A \textbf{rigorous, closed-form characterisation} of
+    \textbf{adversarial generalisation errors}.
+
+    % A High Dimensional Statistical Model for \textbf{Adversarial Training}: Geometry and Trade-Offs
 
     % \textbf{Adversarial training} protects the \textbf{non-robust} features. 
     % \newline
@@ -106,17 +109,17 @@
 }
 
 
-%% Title, author and affiliations section
-% \titlebox{
-%     \title{A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs}  
-%     }
+% Title, author and affiliations section
+\titlebox{
+    \title{A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs}  
+    }
 % End of title stuff
     
 %% Central box with traditional content
 \centerbox{
 \begin{multicols}{3}
 
-\section{Empirical Misk Minimization for Binary Classification}
+\section{Binary Classification}
 
 \textbf{Teacher-Student Setting}: Training data \(\mathcal{D} = \qty{(\x_\datidx, y_\datidx)}_{\datidx=1}^{n}\in\mathbb{R}^{d}\times\{-1,+1\}\) where \(\x_\datidx \sim \gaussdist{\boldsymbol{0}}{\Sigmax}\) and \(y_{i} \sim \mathbb{P}(y|\wstar^{\top}\x_{i})\)
 for fixed $\wstar\in\mathbb{R}^{d}$.
@@ -146,8 +149,20 @@ Note, \(\generr = \advgenerr(\advgencost=0)\).
 \textbf{Boundary Error}: 
 \(\advgenerr = \generr + \bounderr\) where \(\bounderr\) are the attackable samples.
 
+\section{Adversarial ERM}
 
+\begin{equation}\label{eq:adversarial-training-problem}
+     \sum_{\datidx = 1}^{n} 
+    \max_{
+        \norm{\vecdelta_\datidx}_{\Sigmadelta^{-1}} \leq \advtrainingcost 
+    }
+    g \qty(y_\datidx \frac{\w^\top \qty(\x_\datidx + \vecdelta_\datidx)}{\sqrt{d}}) 
+    + r(\w) \,,
+\end{equation}
+where \(g\) is a convex loss, \(r(\w)\) is a convex regularisation and \(\Sigmadelta\) is positive definite. 
+We set \(r(\w) = \frac{\lambda}{2} \norm{\w}_2^2\).
 
+The inner maximisation has a closed form solution:
 \begin{equation}\label{eq:modified-minimisation-problem}
     \sum_{\datidx = 1}^{n} 
     g \qty(
@@ -157,8 +172,21 @@ Note, \(\generr = \advgenerr(\advgencost=0)\).
     + r(\w) \,.
 \end{equation}
 
-\subsection{Block Features}
+\textbf{The High-Dimensional Proportional Limit (hdl)}. The dimension \(d\) and the number of training samples \(n\) are large \(d,n \to \infty\), but the sample complexity is fixed \(\alpha := n / d\).
 
+
+\subsection{Usefulness and robustness}
+Usefulness relates to generalisation error and robustness relates to boundary error.
+\begin{align}
+   \usefulmetric_{\wstar}
+   &= \frac{1}{\sqrt{d}} \mathbb{E}_{\x, y}[y \wstar^\top \x ] \,, \label{eq:mt-usefulness-def} \\
+   \robustmetric_{\wstar} &= \frac{1}{\sqrt{d}} \EEb{\x, y}{
+       \inf_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}}  \leq \advgencost} y \wstar^\top ( \x + \vecdelta)
+   }\,. \label{eq:mt-robustness-def}
+\end{align}
+
+\subsection{Block Features}
+Craft artificial usefulness and robustness:
 \begin{equation}
 \begin{aligned}
    \Sigmax &= \operatorname{blockdiag}\qty( \psi_1 \mathbb{1}_{d_1}, \dots, \psi_k \mathbb{1}_{d_k} ) \,, \\
@@ -168,17 +196,17 @@ Note, \(\generr = \advgenerr(\advgencost=0)\).
 \end{aligned}
 \end{equation}
 
-\subsection{Usefulness and robustness}
-\begin{align}
-   \usefulmetric_{\wstar}
-   &= \frac{1}{\sqrt{d}} \mathbb{E}_{\x, y}[y \wstar^\top \x ] \,, \label{eq:mt-usefulness-def} \\
-   \robustmetric_{\wstar} &= \frac{1}{\sqrt{d}} \EEb{\x, y}{
-       \inf_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}}  \leq \advgencost} y \wstar^\top ( \x + \vecdelta)
-   }\,. \label{eq:mt-robustness-def}
-\end{align}
 
 \section{Main Theorem}
-For the ERM estimator of the risk function with \(\ell_2\) regularisation \(r(\w) = \frac{\lambda}{2} \norm{\w}_2^2\) and \(\lambda \geq 0\), under the data model defined in \cref{sec:setting-specification} and in the high dimensional proportional limit, the generalisation error \(\generr\) and the boundary error \(\bounderr\) concentrate to
+\textbf{Assumptions}: 
+\begin{itemize}
+    \item Well defined spectral distribution in the hdl \(\Sigmax = \mathrm{S}^\top \operatorname{diag}(\omega_i) \mathrm{S}\), \(\zeta_i = \operatorname{diag}(\mathrm{S} \Sigmadelta \mathrm{S}^\top)_{i}\) and \(\upsilon_i = \operatorname{diag}(\mathrm{S} \Sigmaupsilon \mathrm{S}^\top )_i\).
+    \item Assume that \(\wstar^\top \Sigmax \wstar / d\) converges to \(\rho\) in the limit and that the entries of \(\bar{\boldsymbol{\theta}} = \mathrm{S} \Sigmax^\top \wstar / \sqrt{\rho}\) converge as well to a limiting distribution.
+    \item Assume that in the hdl the spectral distributions for the matrices and the distributions of the elements of the vectors just defined converge jointly to a p.d.f., \textit{i.e.} \(\nicefrac{1}{d} \sum_{i=1}^{d} \delta(\omega - \omega_i)\delta(\bar{\theta} - \bar{\theta}_i) \delta(\zeta - \zeta_i)\delta(\upsilon - \upsilon_i) \to \mu(\omega, \bar{\theta}, \zeta, \upsilon)\).
+\end{itemize}
+
+
+For \(\lambda \geq 0\)
 \begin{align}
     \generr &= \frac{1}{\pi} \arccos \qty( 
     {
@@ -196,11 +224,11 @@ For the ERM estimator of the risk function with \(\ell_2\) regularisation \(r(\w
     % \mathcal{D}_1 \qty[\nu] 
     \label{eq:adv-error-theorem-overlap} \,, 
 \end{align}
-and the adversarial generalisation error concentrates to \(\advgenerr = \generr + \bounderr\).
+and \(\advgenerr = \generr + \bounderr\).
 
-The values of \(m\) and \(q\) are the solutions of a system of eight self-consistent equations for the unknowns \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\).
-The first four equations are dependant on the loss function \(g\) and the adversarial training strength \(\advtrainingcost\) and read
-\begin{equation}\label{eq:saddle-point-channel-main-thm}
+\((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) are the solutions of the following system of equations.
+Four are dependent on the loss function \(g\) and the adversarial training strength \(\advtrainingcost\):
+\begin{equation}\label{eq:saddle-point-channel-main-thm}§
     \begin{cases}
         \hat{m} = \alpha \mathbb{E}_{\xi}\left[
             \int_{\RR} \dd{y} \partial_\omega \mathcal{Z}_0 f_g(y, \sqrt{q} \xi, P)
@@ -221,7 +249,7 @@ where \(\xi \sim \gaussdist{0}{1}\) and
 \begin{equation}
     \mathcal{P} (\omega) = \min_x \qty[\frac{(x - \omega)^2}{2 V} + g(yx - \advtrainingcost \sqrt{P})] \,.
 \end{equation}
-The second set of equation depend on the spectral distribution of the matrices \(\Sigmax, \Sigmadelta\) and on the limiting distribution of the elements of \(\bar{\boldsymbol{\theta}}\). The equations read
+The other four are dependent on the spectral distribution of the matrices \(\Sigmax, \Sigmadelta\) and on the limiting distribution of the elements of \(\bar{\boldsymbol{\theta}}\):
 \begin{equation}\label{eq:saddle-point-prior-main-thm}
     \begin{cases}
         m = \mathbb{E}_{\mu} \qty[ 
@@ -246,7 +274,7 @@ The second set of equation depend on the spectral distribution of the matrices \
         ] 
     \end{cases}\,.
 \end{equation}
-The value of \(A\) can be obtained from the solution of the same system of self consistent equations as
+\(A\) is given by
 \begin{equation}
     A = \! \mathbb{E}_{\mu} \! \qty[ 
     {\textstyle
@@ -254,7 +282,15 @@ The value of \(A\) can be obtained from the solution of the same system of self 
     }
     ] \,.
 \end{equation}
-
+\(m,q,P\) and \(A\) are interpretable:
+\begin{equation}\label{eq:interpretation-overlaps}
+\begin{aligned}
+    m &= {\textstyle \mathbb{E}_{\mathcal{D}}\qty[\frac{1}{d} \wstar^\top \Sigmax \what] }\,, & \  
+    q &= {\textstyle \mathbb{E}_{\mathcal{D}}\qty[\frac{1}{d} \what^\top \Sigmax \what] }\,, \\
+    P &= {\textstyle \mathbb{E}_{\mathcal{D}}\qty[\frac{1}{d} \what^\top \Sigmadelta \what] } \,, &\ 
+    A &= {\textstyle \mathbb{E}_{\mathcal{D}}\qty[\frac{1}{d} \what^\top \Sigmaupsilon \what] } \,.
+\end{aligned}
+\end{equation}
 
 \section{Trade-Offs}
 
