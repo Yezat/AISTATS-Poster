@@ -116,7 +116,37 @@
 \centerbox{
 \begin{multicols}{3}
 
-\section{Empirical Misk Minimization}
+\section{Empirical Misk Minimization for Binary Classification}
+
+\textbf{Teacher-Student Setting}: Training data \(\mathcal{D} = \qty{(\x_\datidx, y_\datidx)}_{\datidx=1}^{n}\in\mathbb{R}^{d}\times\{-1,+1\}\) where \(\x_\datidx \sim \gaussdist{\boldsymbol{0}}{\Sigmax}\) and \(y_{i} \sim \mathbb{P}(y|\wstar^{\top}\x_{i})\)
+for fixed $\wstar\in\mathbb{R}^{d}$.
+
+Focus on probit model \(\mathbb{P}\left(y|z\right) = \sfrac{1}{2}\erfc\left(-\sfrac{z}{\sqrt{2}\tau}\right)\), with noise parameter $\tau > 0$.
+
+\textbf{Problem Statement}: Learn \(\hat{y}(\what(\mathcal{D}), \x) = \sign ( \what(\mathcal{D}) \cdot \x / \sqrt{d})\) using adversarial training.
+
+\textbf{Generalisation Error}: 
+\begin{equation}\label{eq:gen-error-definition}
+    \generr = \EEb{y,\x}{
+        \mathbb{1}(y \neq \hat{y} (\what, \x))
+    } \,,
+\end{equation}
+
+\textbf{Adversarial Attack}: 
+Chose \(\norm{\boldsymbol{\upsilon}}_{\Sigmaupsilon^{-1}} \leq \advgencost\) to misclassify the sample \(\x_\datidx\): \(y(\x_\datidx) \neq \hat{y}(\what, \x_\datidx + \boldsymbol{\upsilon}_\datidx)\).
+
+\textbf{Adversarial Generalisation Error}: 
+\begin{equation}\label{eq:adv_gen_metric_definition}
+    \advgenerr = \EEb{y,\x}{
+        \max_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}} \leq \advgencost} \mathbb{1}(y \neq \hat{y} (\what, \x + \vecdelta))
+    } \,, 
+\end{equation}
+Note, \(\generr = \advgenerr(\advgencost=0)\). 
+
+\textbf{Boundary Error}: 
+\(\advgenerr = \generr + \bounderr\) where \(\bounderr\) are the attackable samples.
+
+
 
 \begin{equation}\label{eq:modified-minimisation-problem}
     \sum_{\datidx = 1}^{n} 
