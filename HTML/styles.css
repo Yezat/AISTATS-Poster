@@ -96,18 +96,29 @@ body {
 }
 
 .footer {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  background: #003366;
-  color: white;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 20px;
-  margin-top: auto;
+  background-color: #003366;
+  gap: 20px;
 }
 
 .credits {
-  font-size: 14pt;
-  line-height: 1.8;
+  grid-column: 1;
+  justify-self: start;
+  color: white;
+}
+
+.logo {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 100px;
+  width: auto;
 }
 
 .content-box {
