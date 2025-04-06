@@ -218,7 +218,7 @@
             \begin{minipage}{0.9\textwidth}    
                 \fontsizesection\color{\maincolumnfontcolor}
                 \begin{tabular}{p{0.42\textwidth} @{\hspace{5cm}} p{0.5\textwidth}}
-                    #1 & #2 \\
+                    \vspace*{-1.0cm}#1 & #2 \\
                 \end{tabular}
             \end{minipage}
         \end{minipage}
@@ -230,8 +230,8 @@
 
 %% Bottom box logo 
 \newcommand{\bottomboxlogo}[2][width=\textwidth]{
-    \begin{minipage}[c][\bottomboxheight][c]{0.3\textwidth}
-        \raggedleft\includegraphics[#1]{#2}
+    \begin{minipage}[t][\bottomboxheight][t]{0.3\textwidth}
+        \vspace*{0.2cm}\raggedleft\includegraphics[#1]{#2}
     \end{minipage}
 }
 
