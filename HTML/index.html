@@ -47,31 +47,6 @@
         <p>where \(E_{\text{bnd}}\) represents the attackable samples.</p>
       </div>
 
-      <div class="section">
-        <h2>Main Result</h2>
-        <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
-        <div class="math-block">
-          \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
-          \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Implications</h2>
-        <h3>Trade-off between Usefulness and Robustness</h3>
-        <ul>
-          <li>Usefulness relates to generalisation error</li>
-          <li>Robustness relates to boundary error</li>
-          <li>Trade-off emerges when protecting useful but non-robust features</li>
-        </ul>
-
-        <p><strong>Key Bounds:</strong></p>
-        <div class="math-block">
-          \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
-          \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
-        </div>
-      </div>
-
       <div class="section span-2">
         <h2>Directional Defences and structured data</h2>
         <p><strong>Key Finding:</strong> The choice of defense strategy significantly impacts adversarial performance:</p>
@@ -85,6 +60,16 @@
           <li><strong>Defending non-robust features:</strong> Increases \(E_{\text{gen}}\) while decreasing \(E_{\text{bnd}}\)</li>
         </ul>
       </div>
+
+      <div class="section">
+        <h2>Main Result</h2>
+        <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
+        <div class="math-block">
+          \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
+          \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
+        </div>
+      </div>
+
 
       <div class="section">
         <h2>Tradeoff directions and innocuous directions</h2>
@@ -106,6 +91,24 @@
           \[\sum_{i = 1}^{n} g(y_i \frac{w^\top x_i}{\sqrt{d}}) + \tilde{\lambda}_1 \sqrt{w^\top \Sigma_\delta w} + \tilde{\lambda}_2 w^\top \Sigma_\delta w\]
         </div>
       </div>
+
+
+      <div class="section">
+        <h2>Implications</h2>
+        <h3>Trade-off between Usefulness and Robustness</h3>
+        <ul>
+          <li>Usefulness relates to generalisation error</li>
+          <li>Robustness relates to boundary error</li>
+          <li>Trade-off emerges when protecting useful but non-robust features</li>
+        </ul>
+
+        <p><strong>Key Bounds:</strong></p>
+        <div class="math-block">
+          \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
+          \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
+        </div>
+      </div>
+
     </div>
     </div>
 
