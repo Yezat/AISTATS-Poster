@@ -16,11 +16,9 @@ body {
   width: 841mm;
   height: 1189mm;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  grid-auto-rows: min-content;
   padding: 0mm;
-  gap: 15mm;
   box-sizing: border-box;
   background: white;
 }
@@ -44,6 +42,8 @@ body {
   border-radius: 8px;
   font-size: 18pt;
   line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section h2 {
@@ -114,8 +114,9 @@ body {
   grid-row: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15mm;
+  gap: 15mm 15mm;
   align-content: start;
+  width: 100%;
 }
 
 @media print {
