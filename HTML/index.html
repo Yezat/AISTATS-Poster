@@ -24,18 +24,22 @@
       </ul>
 
       <p><strong>Metrics of Interest:</strong></p>
-      <ul>
-        <li>Generalisation Error:
-          \[E_{\text{gen}} = \mathbb{E}_{y,x}[ \mathbb{1}(y \neq \hat{y} (\hat{w}, x)) ]\]
-        </li>
-        <li>Adversarial Generalisation Error:
-          \[E_{\text{adv}} = \mathbb{E}_{y,x}[ \max_{\|\delta\|_{\Sigma_\upsilon^{-1}} \leq \varepsilon_g} \mathbb{1}(y \neq \hat{y} (\hat{w}, x + \delta)) ]\]
-        </li>
-        <li>Boundary Error:
-          \[E_{\text{adv}} = E_{\text{gen}} + E_{\text{bnd}}\]
-          where \(E_{\text{bnd}}\) are the attackable samples.
-        </li>
-      </ul>
+      
+      <p>Generalisation Error:</p>
+      <div class="math-block">
+        \[E_{\text{gen}} = \mathbb{E}_{y,x}[ \mathbb{1}(y \neq \hat{y} (\hat{w}, x)) ]\]
+      </div>
+
+      <p>Adversarial Generalisation Error:</p>
+      <div class="math-block">
+        \[E_{\text{adv}} = \mathbb{E}_{y,x}[ \max_{\|\delta\|_{\Sigma_\upsilon^{-1}} \leq \varepsilon_g} \mathbb{1}(y \neq \hat{y} (\hat{w}, x + \delta)) ]\]
+      </div>
+
+      <p>Boundary Error:</p>
+      <div class="math-block">
+        \[E_{\text{adv}} = E_{\text{gen}} + E_{\text{bnd}}\]
+      </div>
+      <p>where \(E_{\text{bnd}}\) represents the attackable samples.</p>
     </div>
 
     <div class="section">
