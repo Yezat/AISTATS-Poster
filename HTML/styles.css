@@ -119,21 +119,19 @@ body {
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 40px;
   background-color: #003366;
-  gap: 30px;
 }
 
 .credits {
-  grid-column: 1;
-  justify-self: start;
-  color: white;
   display: flex;
   align-items: flex-start;
   gap: 30px;
   font-size: var(--font-size-credits);
+  color: white;
 }
 
 .credits-content {
@@ -152,11 +150,20 @@ body {
   border-radius: 4px;
 }
 
-.logo {
-  grid-column: 2;
+/* Create a container for the logos */
+.logo-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-left: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo + .logo {
+  margin-left: 5px;
 }
 
 .logo img {
