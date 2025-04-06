@@ -197,16 +197,13 @@
     \fontsizestandard\noindent\colorbox{\columnbackgroundcolor}{
         \noindent\hrulefill\par
         \noindent\makebox[\textwidth][c]{%
-        % \begin{minipage}[t][\centerboxheight][t]{0.9\textwidth}
-        \begin{minipage}[t]{0.9\textwidth} 
+        \begin{minipage}[t][\centerboxheight][t]{0.9\textwidth}
             \vspace{2em}
             \fontsizestandard\color{\columnfontcolor}
                 #1
             \vspace{2em}
-        
         \end{minipage}
         }
-
     }
 }
 % End \centerbox command

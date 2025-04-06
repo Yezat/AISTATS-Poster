@@ -53,8 +53,8 @@
 
 %% Setting the height of the top and bottom (colored) bars
 %% Uncomment either of the following lines it you want to change the defaults heights of the top or bottom bars.
-\setlength{\mainfindingheight}{0.12\paperheight} % Top bar
-\setlength{\centerboxheight}{0.77\paperheight} % Central box
+\setlength{\mainfindingheight}{0.24\paperheight} % Top bar
+\setlength{\centerboxheight}{0.1\paperheight} % Central box
 \setlength{\bottomboxheight}{0.1\paperheight} % Bottom bar
 
 %% Setting the page margin
@@ -105,6 +105,10 @@
     % \textbf{Adversarial training} protects the \textbf{non-robust} features. 
     % \newline
     % A \textbf{trade-off} emerges if those features are \textbf{useful}.
+
+    \vspace{1cm}
+
+    \includegraphics[width=0.6\textwidth]{Assets/feature_combinations_alpha_sweep.pdf}
 
 }
 
@@ -201,7 +205,7 @@
     & - \frac{1}{\pi} \erf\qty( \frac{\advgencost \mathcal{B}}{\sqrt{2}} ) \erfc\qty( \frac{\advgencost \mathcal{A} \, \mathcal{B}}{\sqrt{2}} ) \,,
 \end{align}
 
-\includegraphics[width=0.2\textwidth]{Assets/feature_combinations_alpha_sweep.pdf}
+
 
 \subsection{Directional Defences and structured data}
 
