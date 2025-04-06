@@ -75,7 +75,10 @@
       <div class="section">
         <h2>Directional Defences and structured data</h2>
         <p><strong>Key Finding:</strong> The choice of defense strategy significantly impacts adversarial performance:</p>
-        <div class="image-placeholder">[Defence Sweep Plot]</div>
+        <div class="figure">
+          <img src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization and boundary errors" style="width: 100%; max-width: 600px;">
+          <p class="caption">Impact of different defense strategies on generalization (E_gen) and boundary (E_bnd) errors</p>
+        </div>
         <ul>
           <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
           <li><strong>Uniform defense:</strong> Better balance, improves overall \(E_{\text{adv}}\)</li>
@@ -84,9 +87,21 @@
       </div>
 
       <div class="section">
+        <h2>Tradeoff directions and innocuous directions</h2>
+        <p><strong>Key Insight:</strong> The geometry of features determines whether adversarial training leads to a trade-off:</p>
+        <div class="figure">
+          <img src="../Assets/optimal_defense.pdf" alt="Impact of adversarial training on features with different geometries" style="width: 100%; max-width: 600px;">
+          <p class="caption">Impact of adversarial training on features with different geometries</p>
+        </div>
+      </div>
+
+      <div class="section">
         <h2>Data Dependent Regularisation</h2>
         <p><strong>Key Finding:</strong> Adversarial training can be approximated as a data-dependent regularisation:</p>
-        <div class="image-placeholder">[Regularisation Plot]</div>
+        <div class="figure">
+          <img src="../Assets/feature_combinations_alpha_sweep.pdf" alt="Feature combinations alpha sweep" style="width: 100%; max-width: 600px;">
+          <p class="caption">Feature combinations and their impact on model performance</p>
+        </div>
         <div class="math-block">
           \[\sum_{i = 1}^{n} g(y_i \frac{w^\top x_i}{\sqrt{d}}) + \tilde{\lambda}_1 \sqrt{w^\top \Sigma_\delta w} + \tilde{\lambda}_2 w^\top \Sigma_\delta w\]
         </div>
