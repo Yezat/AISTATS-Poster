@@ -95,6 +95,22 @@
           <img src="../Assets/optimal_defense.pdf" alt="Impact of adversarial training on features with different geometries" style="width: 100%; max-width: 600px;">
           <p class="plot-caption">Impact of adversarial training on features with different geometries</p>
         </div>
+        <p><strong>Two Distinct Cases:</strong></p>
+        <ul>
+          <li><strong>Innocuous Features</strong> (orthogonal to teacher):
+            <ul>
+              <li>Attack can be completely neutralized</li>
+              <li>\(E_{\text{adv}} \to E_{\text{gen}}\) as adversarial training cost increases</li>
+              <li>\(E_{\text{bnd}} \to 0\) with sufficient training</li>
+            </ul>
+          </li>
+          <li><strong>Trade-off Features</strong> (aligned with teacher):
+            <ul>
+              <li>Fundamental trade-off between \(E_{\text{gen}}\) and \(E_{\text{bnd}}\)</li>
+              <li>Optimal performance at specific adversarial training cost</li>
+            </ul>
+          </li>
+        </ul>
       </div>
 
       <div class="section">
