@@ -7,10 +7,12 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
 
-    /* @page {
-      size: A0 portrait; /* or landscape if needed */
-      margin: 0;
-    } */
+    @page {
+      size: A4 portrait; /* or landscape if needed */
+      width: 841mm;
+      height: 1189mm;
+      margin: 30mm 45mm 30mm 45mm; 
+    } 
 
     body {
       font-family: Arial, sans-serif;
@@ -20,15 +22,71 @@
     }
 
     .poster {
+      width: 841mm;
+      height: 1189mm;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
-      gap: 20px;
+      grid-auto-rows: min-content;
+      padding: 40mm;
+      box-sizing: border-box;
       background: white;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
     }
+
+    @media print {
+
+      body{
+        width: 841mm;
+        height: 1189mm;
+        margin: 30mm 45mm 30mm 45mm; 
+        /* change the margins as you want them to be. */
+      } 
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust:exact !important;
+      }
+    
+      .header {
+        grid-column: 1 / -1;
+        text-align: center;
+        background: #003366;
+        color: white;
+        padding: 20px;
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+
+      
+      .section h2 {
+        font-size: 1.2em;
+        margin-top: 0;
+        color: #333;
+      }
+
+      .poster {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* .image-placeholder {
+        border: 1px solid #ccc;
+        background: none;
+        color: #333;
+      } */
+    }
+
+    .header {
+      font-size: 24pt;
+    }
+
+    .section h2 {
+      font-size: 18pt;
+    }
+
+    .section {
+      font-size: 14pt;
+      line-height: 1.6;
+    }
+
 
     .header {
       grid-column: 1 / -1;
