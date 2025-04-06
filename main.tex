@@ -61,7 +61,7 @@
 
 %% Changing font sizes
 % Text font
-\renewcommand{\fontsizestandard}{\fontsize{28}{35} \selectfont}
+\renewcommand{\fontsizestandard}{\fontsize{20}{20} \selectfont}
 % Main column font
 \renewcommand{\fontsizemain}{\fontsize{100}{100} \selectfont}
 % Title font
@@ -231,11 +231,6 @@
     \item \textbf{Defending non-robust features}: Increases $\generr$ while decreasing $\bounderr$
 \end{itemize}
 
-\begin{center}
-\includegraphics[width=0.2\textwidth]{Assets/optimal_defense.pdf}
-\postercaption{Optimal defense strategy depends on feature geometry}
-\end{center}
-
 \textbf{Analytical Result:} For structured data with two feature blocks, we prove that protecting non-robust features:
 \begin{itemize}
     \item Always increases $\generr$ and decreases $\bounderr$
@@ -274,7 +269,11 @@
 \textbf{Key Finding:} Adversarial training can be approximated as a data-dependent regularisation:
 
 \begin{center}
-\includegraphics[width=0.3\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
+    \includegraphics[width=0.3\textwidth]{Assets/gen_lambda_optimal_sweep_alpha.pdf}
+    \postercaption{Adversarial training is not just an $\ell_2$ regularisation}
+\end{center}
+
+\begin{center}
 \includegraphics[width=0.3\textwidth]{Assets/effective_regularisation.pdf}
 \postercaption{Learning curves for adversarial training (top) and its regularisation approximation (bottom)}
 \end{center}
