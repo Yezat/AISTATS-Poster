@@ -2,64 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Poster Template</title>
+  <title>A High Dimensional Statistical Model for Adversarial Training</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="poster">
-    <div class="header">A Rigorous Template for Scientific Poster with MathJax and Grid</div>
-
-    <div class="section">
-      <h2>Problem Setup</h2>
-      <p>This section outlines the classification setup, assumptions, and key variables.</p>
-      <div class="math-block">
-        \( \mathcal{L}(\theta) = \mathbb{E}_{x, y}[\ell(f_\theta(x), y)] \)
-      </div>
-      <div class="image-placeholder">[Diagram Placeholder]</div>
+    <div class="header">
+      A High Dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs
     </div>
 
     <div class="section">
-      <h2>Main Results</h2>
-      <p>Summary of the closed-form solution and key theorem:</p>
+      <h2>Problem Setup</h2>
+      <p><strong>Binary Classification Setting:</strong></p>
+      <ul>
+        <li>Training data \(\mathcal{D} = \{(x_i, y_i)\}_{i=1}^{n} \in \mathbb{R}^{d} \times \{-1,+1\}\)</li>
+        <li>Probit model with noise parameter \(\tau > 0\)</li>
+        <li>High-dimensional limit: \(d,n \to \infty\) with fixed \(\alpha = n/d\)</li>
+        <li>Structured data with block features: covariance matrices \(\Sigma_x, \Sigma_\delta, \Sigma_\upsilon, \Sigma_\theta\) are block diagonal with \(k\) blocks of sizes \(d_1, \dots, d_k\)</li>
+      </ul>
+
+      <p><strong>Metrics of Interest:</strong></p>
+      <ul>
+        <li>Generalisation Error:
+          \[E_{\text{gen}} = \mathbb{E}_{y,x}[ \mathbb{1}(y \neq \hat{y} (\hat{w}, x)) ]\]
+        </li>
+        <li>Adversarial Generalisation Error:
+          \[E_{\text{adv}} = \mathbb{E}_{y,x}[ \max_{\|\delta\|_{\Sigma_\upsilon^{-1}} \leq \varepsilon_g} \mathbb{1}(y \neq \hat{y} (\hat{w}, x + \delta)) ]\]
+        </li>
+        <li>Boundary Error:
+          \[E_{\text{adv}} = E_{\text{gen}} + E_{\text{bnd}}\]
+          where \(E_{\text{bnd}}\) are the attackable samples.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Main Result</h2>
+      <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
       <div class="math-block">
-        \( E_{\text{adv}} = \frac{1}{2} \arccos\left( \rho \sqrt{\frac{\gamma}{\gamma + \sigma^2}} \right) \)
+        \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
+        \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
       </div>
     </div>
 
     <div class="section">
       <h2>Implications</h2>
-      <p>Discuss the trade-offs between robustness and usefulness and consequences for model design.</p>
-      <div class="image-placeholder">[Chart Placeholder]</div>
-    </div>
+      <h3>Trade-off between Usefulness and Robustness</h3>
+      <ul>
+        <li>Usefulness relates to generalisation error</li>
+        <li>Robustness relates to boundary error</li>
+        <li>Trade-off emerges when protecting useful but non-robust features</li>
+      </ul>
 
-    <div class="section">
-      <h2>Defensive Strategies</h2>
-      <p>Compare structured vs. unstructured defenses and their effects.</p>
-      <div class="image-placeholder">[Comparison Graph Placeholder]</div>
-    </div>
-
-    <div class="section">
-      <h2>Regularisation View</h2>
-      <p>Adversarial training as a form of data-dependent regularisation.</p>
+      <p><strong>Key Bounds:</strong></p>
       <div class="math-block">
-        \( \sum_{i=1}^n \left\| y_i - f_\theta(x_i) \right\|^2 + \lambda \cdot \text{Reg}(\theta) \)
+        \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
+        \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
       </div>
-      <div class="image-placeholder">[Learning Curve Placeholder]</div>
     </div>
 
     <div class="section">
-      <h2>Trade-Off Geometry</h2>
-      <p>Exploring how geometry affects adversarial training outcomes.</p>
-      <div class="image-placeholder">[Geometry Effect Plot]</div>
+      <h2>Directional Defences and structured data</h2>
+      <p><strong>Key Finding:</strong> The choice of defense strategy significantly impacts adversarial performance:</p>
+      <div class="image-placeholder">[Defence Sweep Plot]</div>
+      <ul>
+        <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
+        <li><strong>Uniform defense:</strong> Better balance, improves overall \(E_{\text{adv}}\)</li>
+        <li><strong>Defending non-robust features:</strong> Increases \(E_{\text{gen}}\) while decreasing \(E_{\text{bnd}}\)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Data Dependent Regularisation</h2>
+      <p><strong>Key Finding:</strong> Adversarial training can be approximated as a data-dependent regularisation:</p>
+      <div class="image-placeholder">[Regularisation Plot]</div>
+      <div class="math-block">
+        \[\sum_{i = 1}^{n} g(y_i \frac{w^\top x_i}{\sqrt{d}}) + \tilde{\lambda}_1 \sqrt{w^\top \Sigma_\delta w} + \tilde{\lambda}_2 w^\top \Sigma_\delta w\]
+      </div>
     </div>
 
     <div class="footer">
       <div class="credits">
-        Authors: Alice Example, Bob Researcher, Charlie AI <br>
-        Affiliation: Example Institute of Deep Learning <br>
-        Acknowledgments: Supported by Imaginary Grant XYZ123
+        Kasimir Tanner<br>
+        Matteo Vilucchio<br>
+        Bruno Loureiro<br>
+        Florent Krzakala<br>
+        <br>
+        Acknowledgements: Bruno Loureiro acknowledges support from the <em>Choose France - CNRS AI Rising Talents</em> program, and Florent Krzakala from the Swiss National Science Foundation grant SNFS OperaGOST (grant number 200390).
       </div>
     </div>
   </div>
