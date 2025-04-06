@@ -1,0 +1,94 @@
+@page {
+  size: A4 portrait;
+  width: 841mm;
+  height: 1189mm;
+  margin: 30mm 45mm;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.poster {
+  width: 841mm;
+  height: 1189mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
+  padding: 40mm;
+  box-sizing: border-box;
+  background: white;
+}
+
+.header {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: #003366;
+  color: white;
+  padding: 20px;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.section {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14pt;
+  line-height: 1.6;
+}
+
+.section h2 {
+  font-size: 18pt;
+  margin-top: 0;
+  color: #333;
+}
+
+.math-block {
+  background: #f9f9f9;
+  padding: 10px;
+  border-left: 3px solid #ccc;
+  font-family: "Courier New", monospace;
+  margin: 10px 0;
+}
+
+.image-placeholder {
+  background: #eee;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-style: italic;
+}
+
+.footer {
+  grid-column: 1 / -1;
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.credits {
+  font-size: 0.9em;
+}
+
+@media print {
+  body {
+    width: 841mm;
+    height: 1189mm;
+    margin: 30mm 45mm;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .poster {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+} 
