@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Poster Template</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+
+    /* @page {
+      size: A0 portrait; /* or landscape if needed */
+      margin: 0;
+    } */
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    .poster {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 20px;
+      background: white;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .header {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: #003366;
+      color: white;
+      padding: 20px;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .section {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+      color: #333;
+    }
+
+    .math-block {
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 3px solid #ccc;
+      font-family: "Courier New", monospace;
+      margin: 10px 0;
+    }
+
+    .image-placeholder {
+      background: #eee;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #999;
+      font-style: italic;
+    }
+
+    .footer {
+      grid-column: 1 / -1;
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .credits {
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="header">A Rigorous Template for Scientific Poster with MathJax and Grid</div>
+
+    <div class="section">
+      <h2>Problem Setup</h2>
+      <p>This section outlines the classification setup, assumptions, and key variables.</p>
+      <div class="math-block">
+        \( \mathcal{L}(\theta) = \mathbb{E}_{x, y}[\ell(f_\theta(x), y)] \)
+      </div>
+      <div class="image-placeholder">[Diagram Placeholder]</div>
+    </div>
+
+    <div class="section">
+      <h2>Main Results</h2>
+      <p>Summary of the closed-form solution and key theorem:</p>
+      <div class="math-block">
+        \( E_{\text{adv}} = \frac{1}{2} \arccos\left( \rho \sqrt{\frac{\gamma}{\gamma + \sigma^2}} \right) \)
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Implications</h2>
+      <p>Discuss the trade-offs between robustness and usefulness and consequences for model design.</p>
+      <div class="image-placeholder">[Chart Placeholder]</div>
+    </div>
+
+    <div class="section">
+      <h2>Defensive Strategies</h2>
+      <p>Compare structured vs. unstructured defenses and their effects.</p>
+      <div class="image-placeholder">[Comparison Graph Placeholder]</div>
+    </div>
+
+    <div class="section">
+      <h2>Regularisation View</h2>
+      <p>Adversarial training as a form of data-dependent regularisation.</p>
+      <div class="math-block">
+        \( \sum_{i=1}^n \left\| y_i - f_\theta(x_i) \right\|^2 + \lambda \cdot \text{Reg}(\theta) \)
+      </div>
+      <div class="image-placeholder">[Learning Curve Placeholder]</div>
+    </div>
+
+    <div class="section">
+      <h2>Trade-Off Geometry</h2>
+      <p>Exploring how geometry affects adversarial training outcomes.</p>
+      <div class="image-placeholder">[Geometry Effect Plot]</div>
+    </div>
+
+    <div class="footer">
+      <div class="credits">
+        Authors: Alice Example, Bob Researcher, Charlie AI <br>
+        Affiliation: Example Institute of Deep Learning <br>
+        Acknowledgments: Supported by Imaginary Grant XYZ123
+      </div>
+    </div>
+  </div>
+</body>
+</html>
