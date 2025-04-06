@@ -194,10 +194,29 @@ body {
   margin: 20px 0;
 }
 
+.plot-container.side-by-side {
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.plot-container.side-by-side .plot-wrapper {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .plot {
   width: 70%;
   /* max-width: 800px; */
   height: auto;
+}
+
+.plot-container.side-by-side .plot {
+  width: 100%;
 }
 
 .plot-caption {

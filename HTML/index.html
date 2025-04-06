@@ -77,18 +77,32 @@
       <div class="section">
         <h2>Tradeoff directions and innocuous directions</h2>
         <p><strong>Key Insight:</strong> The geometry of features determines whether adversarial training leads to a trade-off:</p>
-        <div class="figure">
+        <div class="plot-container">
           <img src="../Assets/optimal_defense.pdf" alt="Impact of adversarial training on features with different geometries" style="width: 100%; max-width: 600px;">
-          <p class="caption">Impact of adversarial training on features with different geometries</p>
+          <p class="plot-caption">Impact of adversarial training on features with different geometries</p>
         </div>
       </div>
 
       <div class="section">
         <h2>Data Dependent Regularisation</h2>
         <p><strong>Key Finding:</strong> Adversarial training can be approximated as a data-dependent regularisation:</p>
+        <div class="plot-container side-by-side">
+          <div class="plot-wrapper">
+            <img class="plot" src="../Assets/effective_regularisation.pdf" alt="Learning curves for adversarial training and its regularisation approximation">
+            <p class="plot-caption">Learning curves for adversarial training (top) and its regularisation approximation (bottom)</p>
+          </div>
+          <div class="plot-wrapper">
+            <img class="plot" src="../Assets/gen_lambda_optimal_sweep_alpha.pdf" alt="Adversarial training is not just an ℓ₂ regularisation">
+            <p class="plot-caption">Adversarial training is not just an ℓ₂ regularisation</p>
+          </div>
+        </div>
         <div class="math-block">
           \[\sum_{i = 1}^{n} g(y_i \frac{w^\top x_i}{\sqrt{d}}) + \tilde{\lambda}_1 \sqrt{w^\top \Sigma_\delta w} + \tilde{\lambda}_2 w^\top \Sigma_\delta w\]
         </div>
+        <ul>
+          <li><strong>Effective Regularisation:</strong> is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation</li>
+          <li><strong>Non-sparse:</strong> \(\sqrt{\ell_2}\) term provides linear scaling in the norm of the student vector without sparsity</li>
+        </ul>
       </div>
 
 
