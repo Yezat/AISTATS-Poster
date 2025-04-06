@@ -54,8 +54,8 @@
         <h2>Directional Defences and structured data</h2>
         <p><strong>Key Finding:</strong> The choice of defense strategy significantly impacts adversarial performance:</p>
         <div class="plot-container">
-          <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization and boundary errors">
-          <p class="plot-caption">Impact of different defense strategies on generalization (E_gen) and boundary (E_bnd) errors</p>
+          <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors">
+          <p class="plot-caption">Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors</p>
         </div>
         <ul>
           <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
@@ -70,6 +70,20 @@
         <div class="math-block">
           \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
           \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
+        </div>
+
+        <h2>Implications</h2>
+        <h3>Trade-off between Usefulness and Robustness</h3>
+        <ul>
+          <li>Usefulness relates to generalisation error</li>
+          <li>Robustness relates to boundary error</li>
+          <li>Trade-off emerges when protecting useful but non-robust features</li>
+        </ul>
+
+        <p><strong>Key Bounds:</strong></p>
+        <div class="math-block">
+          \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
+          \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
         </div>
       </div>
 
@@ -102,31 +116,6 @@
         <ul>
           <li><strong>Effective Regularisation:</strong> is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation</li>
           <li><strong>Non-sparse:</strong> \(\sqrt{\ell_2}\) term provides linear scaling in the norm of the student vector without sparsity</li>
-        </ul>
-      </div>
-
-
-      <div class="section">
-        <h2>Implications</h2>
-        <h3>Trade-off between Usefulness and Robustness</h3>
-        <ul>
-          <li>Usefulness relates to generalisation error</li>
-          <li>Robustness relates to boundary error</li>
-          <li>Trade-off emerges when protecting useful but non-robust features</li>
-        </ul>
-
-        <p><strong>Key Bounds:</strong></p>
-        <div class="math-block">
-          \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
-          \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Acknowledgements</h2>
-        <ul>
-          <li>Bruno Loureiro acknowledges support from the <em>Choose France - CNRS AI Rising Talents</em> program</li>
-          <li>Florent Krzakala acknowledges support from the Swiss National Science Foundation grant SNFS OperaGOST (grant number 200390)</li>
         </ul>
       </div>
 

@@ -14,7 +14,7 @@
   --font-size-section-subheading: 28pt;
   --font-size-math: var(--font-size-medium);
   --font-size-caption: 22pt;
-  --font-size-credits: 28pt;
+  --font-size-credits: 32pt;
 }
 
 @page {
@@ -121,9 +121,9 @@ body {
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 20px;
+  padding: 40px;
   background-color: #003366;
-  gap: 20px;
+  gap: 30px;
 }
 
 .credits {
@@ -132,7 +132,7 @@ body {
   color: white;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 30px;
   font-size: var(--font-size-credits);
 }
 
@@ -145,10 +145,10 @@ body {
 }
 
 .qr-code img {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   background: white;
-  padding: 10px;
+  padding: 15px;
   border-radius: 4px;
 }
 
@@ -160,7 +160,7 @@ body {
 }
 
 .logo img {
-  max-height: 200px;
+  max-height: 250px;
   width: auto;
 }
 
