@@ -127,7 +127,7 @@
 
 \textbf{Binary Classification Setting}:
 \begin{itemize}
-    \item Training data \(\mathcal{D} = \qty{(\x_\datidx, y_\datidx)}_{\datidx=1}^{n}\in\mathbb{R}^{d}\times\{-1,+1\}\) 
+    \item Training data \(\mathcal{D} = \qty{(\x_\datidx, y_\datidx)}_{\datidx=1}^{n}\in\mathbb{R}^{d}\times\{-1,+1\}\)
     \item Probit model with noise parameter $\tau > 0$
     \item High-dimensional limit: $d,n \to \infty$ with fixed $\alpha = n/d$
     \item Structured data with block features: covariance matrices $\Sigmax, \Sigmadelta, \Sigmaupsilon, \Sigmatheta$ are block diagonal with $k$ blocks of sizes $d_1, \dots, d_k$
@@ -135,31 +135,43 @@
 
 \textbf{Metrics of Interest}:
 \begin{itemize}
-    \item Generalisation Error: \(\generr = \EEb{y,\x}{ \mathbb{1}(y \neq \hat{y} (\what, \x)) } \)
-    \item Adversarial Generalisation Error: \(\advgenerr = \EEb{y,\x}{
-        \max_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}} \leq \advgencost} \mathbb{1}(y \neq \hat{y} (\what, \x + \vecdelta))
-    } \)
-    \item Boundary Error: \(\advgenerr = \generr + \bounderr\) where \(\bounderr\) are the attackable samples.
-    \item Usefulness and Robustness:\begin{align}
+    \item Generalisation Error:
+    \begin{equation}
+        \generr = \EEb{y,\x}{ \mathbb{1}(y \neq \hat{y} (\what, \x)) }
+    \end{equation}
+    
+    \item Adversarial Generalisation Error:
+    \begin{equation}
+        \advgenerr = \EEb{y,\x}{
+            \max_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}} \leq \advgencost} \mathbb{1}(y \neq \hat{y} (\what, \x + \vecdelta))
+        }
+    \end{equation}
+    
+    \item Boundary Error:
+    \begin{equation}
+        \advgenerr = \generr + \bounderr
+    \end{equation}
+    where $\bounderr$ are the attackable samples.
+    
+    \item Usefulness and Robustness:
+    \begin{align}
         \usefulmetric_{\wstar}
-        &= \frac{1}{\sqrt{d}} \mathbb{E}_{\x, y}[y \wstar^\top \x ] \,, \label{eq:mt-usefulness-def} \\
+        &= \frac{1}{\sqrt{d}} \mathbb{E}_{\x, y}[y \wstar^\top \x ] \label{eq:mt-usefulness-def} \\
         \robustmetric_{\wstar} &= \frac{1}{\sqrt{d}} \EEb{\x, y}{
             \inf_{\norm{\vecdelta}_{\Sigmaupsilon^{-1}}  \leq \advgencost} y \wstar^\top ( \x + \vecdelta)
-        }\,. \label{eq:mt-robustness-def}
-     \end{align}
+        } \label{eq:mt-robustness-def}
+    \end{align}
 \end{itemize}
 
 \textbf{Adversarial ERM}:
-
 \begin{equation}
     \sum_{\datidx = 1}^{n} 
     g \qty(
         y_\datidx \frac{\w^\top \x_\datidx}{\sqrt{d}} 
         - \advtrainingcost \frac{\sqrt{\w^\top \Sigmadelta \w}}{\sqrt{d}} 
     ) 
-    + r(\w) \,.
+    + r(\w)
 \end{equation}
-
 
 \section{Main Result}
 
@@ -170,42 +182,39 @@
     {
         m / \sqrt{ (\rho + \tau^2) q}
     } 
-    ) \,, \\
+    ) \\
     \bounderr &= \!
     \int_{0}^{\advgencost \frac{\sqrt{A}}{\sqrt{q}}} \!\!\!\!
     {\textstyle
         \erfc\left( \frac{ -\frac{m}{\sqrt{q}} \nu}{\sqrt{2 \qty(\rho + \tau^2 - m^2 / q)}} \right) 
         \!\! \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} \dd{\nu}
     }
-    \label{eq:adv-error-theorem-overlap} \,, 
+    \label{eq:adv-error-theorem-overlap}
 \end{align}
-
 
 \section{Implications}
 
 \subsection{Trade-off between Usefulness and Robustness}:
 
 \begin{itemize}
-    \item Usefulness relates to generalisation error.
-    \item Robustness relates to boundary error.
-    \item Trade-off emerges when protecting useful but non-robust features.
+    \item Usefulness relates to generalisation error
+    \item Robustness relates to boundary error
+    \item Trade-off emerges when protecting useful but non-robust features
 \end{itemize}
 
 \textbf{Key Bounds}:
 
-\begin{equation}\label{eq:bound-gen-error}
+\begin{equation}
     \generr
     \geq
-    \frac{1}{\pi} \arccos( \sqrt{\frac{\pi}{2 \rho}} \usefulmetric_{\wstar} ) \,. 
+    \frac{1}{\pi} \arccos( \sqrt{\frac{\pi}{2 \rho}} \usefulmetric_{\wstar} )
+    \label{eq:bound-gen-error}
 \end{equation}
 
-\begin{align} \label{eq:bound-boundary-error}
-    \bounderr \leq & \  
-    2 \mathrm{T}\qty( \advgencost \mathcal{A} \, \mathcal{B}, \mathcal{A}^{-1} ) - \frac{1}{\pi} \arctan( \mathcal{A}^{-1} ) \nonumber\\ 
-    & - \frac{1}{\pi} \erf\qty( \frac{\advgencost \mathcal{B}}{\sqrt{2}} ) \erfc\qty( \frac{\advgencost \mathcal{A} \, \mathcal{B}}{\sqrt{2}} ) \,,
-\end{align}
-
-
+\begin{equation}
+    \bounderr \leq 2 \mathrm{T}\qty( \advgencost \mathcal{A} \, \mathcal{B}, \mathcal{A}^{-1} ) - \frac{1}{\pi} \arctan( \mathcal{A}^{-1} ) - \frac{1}{\pi} \erf\qty( \frac{\advgencost \mathcal{B}}{\sqrt{2}} ) \erfc\qty( \frac{\advgencost \mathcal{A} \, \mathcal{B}}{\sqrt{2}} )
+    \label{eq:bound-boundary-error}
+\end{equation}
 
 \subsection{Directional Defences and structured data}
 
@@ -280,19 +289,13 @@
 \textbf{Key Properties:}
 \begin{itemize}
     \item \textbf{Not just $\ell_2$}: Performance depends on $\advtrainingcost$ even with optimal $\lambda$
-    \item \textbf{Effective Regularisation}: is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation. 
+    \item \textbf{Effective Regularisation}: is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation
     \item \textbf{Non-sparse}: $\sqrt{\ell_2}$ term provides linear scaling in the norm of the student vector without sparsity
 \end{itemize}
 
 \section{Acknowledgements}
 
 Bruno Loureiro acknowledges support from the \textit{Choose France - CNRS AI Rising Talents} program, and Florent Krzakala from the Swiss National Science Foundation grant SNFS OperaGOST  (grant number $200390$).
-
-
-
-
-
-\columnbreak
 
 \end{multicols}
 }
