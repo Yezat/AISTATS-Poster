@@ -1,3 +1,22 @@
+:root {
+  /* Base font sizes */
+  --font-size-base: 24pt;
+  --font-size-small: 20pt;
+  --font-size-medium: 24pt;
+  --font-size-large: 32pt;
+  --font-size-xlarge: 48pt;
+  
+  /* Specific component sizes */
+  --font-size-header: var(--font-size-xlarge);
+  --font-size-title: 40pt;
+  --font-size-section: var(--font-size-medium);
+  --font-size-section-heading: var(--font-size-large);
+  --font-size-section-subheading: 28pt;
+  --font-size-math: var(--font-size-medium);
+  --font-size-caption: 22pt;
+  --font-size-credits: 28pt;
+}
+
 @page {
   size: A4 portrait;
   width: 841mm;
@@ -30,7 +49,7 @@ body {
   background: #003366;
   color: white;
   padding: 25px;
-  font-size: 32pt;
+  font-size: var(--font-size-header);
   font-weight: bold;
   margin-bottom: 10mm;
 }
@@ -40,7 +59,7 @@ body {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 18pt;
+  font-size: var(--font-size-section);
   line-height: 1.6;
   width: 100%;
   box-sizing: border-box;
@@ -51,25 +70,25 @@ body {
 }
 
 .section h2 {
-  font-size: 24pt;
+  font-size: var(--font-size-section-heading);
   margin-top: 0;
   color: #333;
   margin-bottom: 15px;
 }
 
 .section h3 {
-  font-size: 20pt;
+  font-size: var(--font-size-section-subheading);
   margin-top: 15px;
   margin-bottom: 10px;
 }
 
 .section p {
-  font-size: 18pt;
+  font-size: var(--font-size-section);
   margin: 10px 0;
 }
 
 .section ul {
-  font-size: 18pt;
+  font-size: var(--font-size-section);
   margin: 10px 0;
   padding-left: 25px;
 }
@@ -84,7 +103,7 @@ body {
   border-left: 3px solid #ccc;
   font-family: "Courier New", monospace;
   margin: 15px 0;
-  font-size: 18pt;
+  font-size: var(--font-size-math);
 }
 
 .image-placeholder {
@@ -114,6 +133,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  font-size: var(--font-size-credits);
 }
 
 .credits-content {
@@ -151,7 +171,7 @@ body {
 }
 
 .content-box h1 {
-  font-size: 28pt;
+  font-size: var(--font-size-title);
   margin-bottom: 20mm;
   text-align: center;
 }
@@ -184,7 +204,7 @@ body {
   font-style: italic;
   color: #666;
   margin-top: 10px;
-  font-size: 16pt;
+  font-size: var(--font-size-caption);
   max-width: 800px;
 }
 
