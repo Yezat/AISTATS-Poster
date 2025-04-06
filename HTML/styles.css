@@ -107,6 +107,25 @@ body {
   grid-column: 1;
   justify-self: start;
   color: white;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.credits-content {
+  flex: 1;
+}
+
+.qr-code {
+  flex-shrink: 0;
+}
+
+.qr-code img {
+  width: 150px;
+  height: 150px;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .logo {
