@@ -4,17 +4,17 @@
   --font-size-small: 20pt;
   --font-size-medium: 24pt;
   --font-size-large: 32pt;
-  --font-size-xlarge: 48pt;
+  --font-size-xlarge: 56pt;
   
   /* Specific component sizes */
   --font-size-header: var(--font-size-xlarge);
-  --font-size-title: 40pt;
+  --font-size-title: 50pt;
   --font-size-section: var(--font-size-medium);
   --font-size-section-heading: var(--font-size-large);
   --font-size-section-subheading: 28pt;
   --font-size-math: var(--font-size-medium);
   --font-size-caption: 22pt;
-  --font-size-credits: 32pt;
+  --font-size-credits: 44pt;
 }
 
 @page {
@@ -143,8 +143,8 @@ body {
 }
 
 .qr-code img {
-  width: 180px;
-  height: 180px;
+  width: 300px;
+  height: 300px;
   background: white;
   padding: 15px;
   border-radius: 4px;
@@ -167,7 +167,7 @@ body {
 }
 
 .logo img {
-  max-height: 250px;
+  max-height: 300px;
   width: auto;
 }
 
