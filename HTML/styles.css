@@ -46,6 +46,10 @@ body {
   box-sizing: border-box;
 }
 
+.section.span-2 {
+  grid-column: span 2;
+}
+
 .section h2 {
   font-size: 24pt;
   margin-top: 0;
