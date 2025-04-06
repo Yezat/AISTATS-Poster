@@ -110,6 +110,18 @@ body {
   line-height: 1.8;
 }
 
+.content-box {
+  grid-row: 2;
+  padding: 20mm 0;
+  margin: 0 20mm;
+}
+
+.content-box h1 {
+  font-size: 28pt;
+  margin-bottom: 20mm;
+  text-align: center;
+}
+
 .main-content {
   grid-row: 2;
   display: grid;
