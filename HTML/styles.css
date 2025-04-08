@@ -4,11 +4,11 @@
   --font-size-small: 20pt;
   --font-size-medium: 24pt;
   --font-size-large: 32pt;
-  --font-size-xlarge: 56pt;
+  --font-size-xlarge: 60pt;
   
   /* Specific component sizes */
   --font-size-header: var(--font-size-xlarge);
-  --font-size-title: 50pt;
+  --font-size-title: 54pt;
   --font-size-section: var(--font-size-medium);
   --font-size-section-heading: var(--font-size-large);
   --font-size-section-subheading: 28pt;
@@ -51,7 +51,7 @@ body {
   padding: 25px;
   font-size: var(--font-size-header);
   /* font-weight: bold; */
-  margin-bottom: 10mm;
+  margin-bottom: 0;
 }
 
 .section {
