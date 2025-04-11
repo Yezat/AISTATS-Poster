@@ -10,7 +10,7 @@
 <body>
   <div class="poster">
     <div class="header">
-      Exact Asymptotics of <b>Adversarial Training</b>: Characterizing the Geometry of <b>Robustness-Accuracy Trade-Offs</b>
+      "Exact Asymptotics of <b>Adversarial Training</b>: Characterizing the Geometry of <b>Robustness-Accuracy Trade-Offs</b>"
       <div class="plot-container">
         <!-- <img src="../Assets/feature_combinations_alpha_sweep.pdf" alt="Feature combinations alpha sweep" style="width: 60%;"> -->
         <img src="../Assets/feature_combinations_alpha_sweep.svg" alt="Feature combinations alpha sweep" style="width: 100%;">
@@ -18,19 +18,41 @@
     </div>
 
     <div class="content-box">
-      <h1>A High-dimensional Statistical Model for Adversarial Training: Geometry and Trade-Offs</h1>
+      <h1>A High-dimensional Statistical Model for Adversarial Training: <br>Geometry and Trade-Offs</h1>
 
     <div class="main-content">
-      
+      <div class="section">
+        <h2>Motivation</h2>
+        <p><strong>Key Previous Results:</strong></p>
+        <ul>
+          <li>Empirical findings for useful and robust features (Ilyas et al., 2019)</li>
+          <li>Theory for the NTK regime (Tsilivis & Kempe, 2022)</li>
+        </ul>
+        <div class="plot-container side-by-side">
+          <div class="plot-wrapper">
+            <img src="../Assets/ilyas_robustness.png" alt="Ilyas et al. - 2019" style="width: 100%;">
+            <p class="plot-caption">Ilyas et al. (2019) - Disentangle features into robust and non-robust</p>
+          </div>
+          <div class="plot-wrapper">
+            <img src="../Assets/tsivilis_usefulness_robustness.png" alt="Nikolaos Tsilivis and Julia Kempe - 2022" style="width: 100%;">
+            <p class="plot-caption">Tsilivis & Kempe (2022) - Distinction of useful and robust features</p>
+          </div>
+        </div>
+      </div>
+
       <div class="section">
         <h2>Problem Setup</h2>
         <p><strong>Binary Classification Setting:</strong></p>
         <ul>
           <li>Training data \(\mathcal{D} = \{(x_i, y_i)\}_{i=1}^{n} \in \mathbb{R}^{d} \times \{-1,+1\}\)</li>
-          <li>Probit model with noise parameter \(\tau > 0\)</li>
+          <!-- <li>Probit model with noise parameter \(\tau > 0\)</li> -->
           <li>High-dimensional limit: \(d,n \to \infty\) with fixed \(\alpha = n/d\)</li>
           <li>Structured data with block features: covariance matrices \(\Sigma_x, \Sigma_\delta, \Sigma_\upsilon, \Sigma_\theta\) are block diagonal with \(k\) blocks of sizes \(d_1, \dots, d_k\)</li>
         </ul>
+
+        <div class="math-block">
+          \[ \sum_{i = 1}^{n} \max_{ \|\delta_i\|_{\Sigma_\delta^{-1}} \leq \varepsilon_t } g \left(y_i \frac{w^\top (x_i + \delta_i)}{\sqrt{d}}\right) + r(w) \]
+        </div>
 
         <p><strong>Metrics of Interest:</strong></p>
         
@@ -52,8 +74,7 @@
       </div>
 
       <div class="section span-2">
-        <h2>Directional Defences and structured data</h2>
-        <p><strong>Key Finding:</strong> The choice of defense strategy significantly impacts adversarial performance:</p>
+        <h2>The choice of defense strategy significantly impacts adversarial performance</h2>
         <div class="plot-container">
           <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors">
           <p class="plot-caption">Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors</p>
@@ -66,8 +87,17 @@
       </div>
 
       <div class="section">
-        <h2>Main Result</h2>
+        <h2>Theoretical Results</h2>
         <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
+
+        Explain m, q and P. As expectations on the data TODO introduce w, w*
+
+        <div class="math-block">
+          \[ m = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} w^*{}^\top \Sigma_x \hat{w}\right] \,, \]
+          \[ q = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_x \hat{w}\right] \,, \]
+          \[ P = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_\delta \hat{w}\right] \,, \]
+        </div>
+          
         <div class="math-block">
           \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
           \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
@@ -81,17 +111,16 @@
           <li>Trade-off emerges when protecting useful but non-robust features</li>
         </ul>
 
-        <p><strong>Key Bounds:</strong></p>
+        <!-- <p><strong>Key Bounds:</strong></p>
         <div class="math-block">
           \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
           \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
-        </div>
+        </div> -->
       </div>
 
 
       <div class="section">
-        <h2>Tradeoff directions and innocuous directions</h2>
-        <p><strong>Key Insight:</strong> The geometry of features determines whether adversarial training leads to a trade-off:</p>
+        <h2>The geometry of features determines whether adversarial training leads to a trade-off</h2>
         <div class="plot-container">
           <img src="../Assets/optimal_defense.pdf" alt="Impact of adversarial training on features with different geometries" style="width: 100%; max-width: 600px;">
           <p class="plot-caption">Impact of adversarial training on features with different geometries</p>
@@ -114,7 +143,7 @@
         </ul>
       </div>
 
-      <div class="section">
+      <!-- <div class="section">
         <h2>Data Dependent Regularisation</h2>
         <p><strong>Key Finding:</strong> Adversarial training can be approximated as a data-dependent regularisation:</p>
         <div class="plot-container side-by-side">
@@ -134,7 +163,7 @@
           <li><strong>Effective Regularisation:</strong> is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation</li>
           <li><strong>Non-sparse:</strong> \(\sqrt{\ell_2}\) term provides linear scaling in the norm of the student vector without sparsity</li>
         </ul>
-      </div>
+      </div> -->
 
     </div>
     </div>

@@ -4,11 +4,11 @@
   --font-size-small: 20pt;
   --font-size-medium: 24pt;
   --font-size-large: 32pt;
-  --font-size-xlarge: 60pt;
+  --font-size-xlarge: 46pt;
   
   /* Specific component sizes */
   --font-size-header: var(--font-size-xlarge);
-  --font-size-title: 54pt;
+  --font-size-title: 66pt;
   --font-size-section: var(--font-size-medium);
   --font-size-section-heading: var(--font-size-large);
   --font-size-section-subheading: 28pt;
@@ -18,7 +18,7 @@
 }
 
 @page {
-  size: A4 portrait;
+  size: A0 portrait;
   width: 841mm;
   height: 1189mm;
   margin: 0;
