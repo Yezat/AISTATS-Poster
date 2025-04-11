@@ -108,6 +108,21 @@
           <li>Robustness relates to boundary error</li>
           <li>Trade-off emerges when protecting useful but non-robust features</li>
         </ul>
+        <h2>The errors scale inversly with \(\alpha=\frac{n}{d}\)</h2>
+          <p><strong>Proposition:</strong> Consider a single feature \(k=1\), \(\forall \varepsilon_g, \varepsilon_t \geq 0\) for \(\alpha\) big enough \( \exists M_1, M_2\) such that:</p>
+
+          <div class="math-block">
+          \[
+          \begin{aligned}
+              \left|
+                  E_{\text{adv}}(\varepsilon_g, \varepsilon_t) - E_{\text{adv}}(\varepsilon_g, \varepsilon_t = 0)
+              \right| & < M_1 / \alpha \\
+              \left|
+                  E_{\text{gen}}(\varepsilon_t) - E_{\text{gen}}(\varepsilon_t = 0)
+              \right| & < M_2 / \alpha
+          \end{aligned}
+          \]
+          </div>
 
       </div>
 
