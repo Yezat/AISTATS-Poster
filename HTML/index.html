@@ -40,6 +40,19 @@
         </div>
       </div>
 
+      <div class="section span-2">
+        <h2>The choice of defense strategy significantly impacts adversarial performance</h2>
+        <div class="plot-container">
+          <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors">
+          <p class="plot-caption">Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors</p>
+        </div>
+        <ul>
+          <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
+          <li><strong>Uniform defense:</strong> Better balance, improves overall \(E_{\text{adv}}\)</li>
+          <li><strong>Defending non-robust features:</strong> Increases \(E_{\text{gen}}\) while decreasing \(E_{\text{bnd}}\)</li>
+        </ul>
+      </div>
+
       <div class="section">
         <h2>Problem Setup</h2>
         <p><strong>Binary Classification Setting:</strong></p>
@@ -72,22 +85,10 @@
         <p>where \(E_{\text{bnd}}\) represents the attackable samples.</p>
       </div>
 
-      <div class="section span-2">
-        <h2>The choice of defense strategy significantly impacts adversarial performance</h2>
-        <div class="plot-container">
-          <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors">
-          <p class="plot-caption">Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors</p>
-        </div>
-        <ul>
-          <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
-          <li><strong>Uniform defense:</strong> Better balance, improves overall \(E_{\text{adv}}\)</li>
-          <li><strong>Defending non-robust features:</strong> Increases \(E_{\text{gen}}\) while decreasing \(E_{\text{bnd}}\)</li>
-        </ul>
-      </div>
 
       <div class="section">
         <h2>Theoretical Results</h2>
-        <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
+        <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through: (see main figure)</p>
           
         <div class="math-block">
           \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
@@ -108,11 +109,6 @@
           <li>Trade-off emerges when protecting useful but non-robust features</li>
         </ul>
 
-        <!-- <p><strong>Key Bounds:</strong></p>
-        <div class="math-block">
-          \[E_{\text{gen}} \geq \frac{1}{\pi} \arccos(\sqrt{\frac{\pi}{2\rho}} \mathcal{U}_{w^*})\]
-          \[E_{\text{bnd}} \leq 2T(\varepsilon_g \mathcal{A} \mathcal{B}, \mathcal{A}^{-1}) - \frac{1}{\pi} \arctan(\mathcal{A}^{-1}) - \frac{1}{\pi} \text{erf}(\frac{\varepsilon_g \mathcal{B}}{\sqrt{2}}) \text{erfc}(\frac{\varepsilon_g \mathcal{A} \mathcal{B}}{\sqrt{2}})\]
-        </div> -->
       </div>
 
 
@@ -139,28 +135,6 @@
           </li>
         </ul>
       </div>
-
-      <!-- <div class="section">
-        <h2>Data Dependent Regularisation</h2>
-        <p><strong>Key Finding:</strong> Adversarial training can be approximated as a data-dependent regularisation:</p>
-        <div class="plot-container side-by-side">
-          <div class="plot-wrapper">
-            <img class="plot" src="../Assets/effective_regularisation.pdf" alt="Learning curves for adversarial training and its regularisation approximation">
-            <p class="plot-caption">Learning curves for adversarial training (top) and its regularisation approximation (bottom)</p>
-          </div>
-          <div class="plot-wrapper">
-            <img class="plot" src="../Assets/gen_lambda_optimal_sweep_alpha.pdf" alt="Adversarial training is not just an \(\ell_2\) regularisation">
-            <p class="plot-caption">Adversarial training is not just an \(\ell_2\) regularisation</p>
-          </div>
-        </div>
-        <div class="math-block">
-          \[\sum_{i = 1}^{n} g(y_i \frac{w^\top x_i}{\sqrt{d}}) + \tilde{\lambda}_1 \sqrt{w^\top \Sigma_\delta w} + \tilde{\lambda}_2 w^\top \Sigma_\delta w\]
-        </div>
-        <ul>
-          <li><strong>Effective Regularisation:</strong> is a directional \(\sqrt{\ell_2} + \ell_2\) regularisation</li>
-          <li><strong>Non-sparse:</strong> \(\sqrt{\ell_2}\) term provides linear scaling in the norm of the student vector without sparsity</li>
-        </ul>
-      </div> -->
 
     </div>
     </div>
