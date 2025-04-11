@@ -45,7 +45,6 @@
         <p><strong>Binary Classification Setting:</strong></p>
         <ul>
           <li>Training data \(\mathcal{D} = \{(x_i, y_i)\}_{i=1}^{n} \in \mathbb{R}^{d} \times \{-1,+1\}\)</li>
-          <!-- <li>Probit model with noise parameter \(\tau > 0\)</li> -->
           <li>High-dimensional limit: \(d,n \to \infty\) with fixed \(\alpha = n/d\)</li>
           <li>Structured data with block features: covariance matrices \(\Sigma_x, \Sigma_\delta, \Sigma_\upsilon, \Sigma_\theta\) are block diagonal with \(k\) blocks of sizes \(d_1, \dots, d_k\)</li>
         </ul>
@@ -89,18 +88,16 @@
       <div class="section">
         <h2>Theoretical Results</h2>
         <p><strong>Theorem:</strong> Adversarial generalization errors are <em>provably</em> characterized by a system of 8 order parameters \((m, q, V, P, \hat{m}, \hat{q}, \hat{V}, \hat{P})\) and an additional parameter \(A\) through:</p>
-
-        Explain m, q and P. As expectations on the data TODO introduce w, w*
-
-        <div class="math-block">
-          \[ m = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} w^*{}^\top \Sigma_x \hat{w}\right] \,, \]
-          \[ q = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_x \hat{w}\right] \,, \]
-          \[ P = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_\delta \hat{w}\right] \,, \]
-        </div>
           
         <div class="math-block">
           \[E_{\text{gen}} = \frac{1}{\pi} \arccos\left( \frac{m}{\sqrt{(\rho + \tau^2)q}} \right)\]
           \[E_{\text{bnd}} = \int_{0}^{\varepsilon_g \frac{\sqrt{A}}{\sqrt{q}}} \text{erfc}\left( \frac{-\frac{m}{\sqrt{q}} \nu}{\sqrt{2(\rho + \tau^2 - m^2/q)}} \right) \frac{e^{-\frac{\nu^2}{2}}}{\sqrt{2\pi}} d\nu\]
+        </div>
+
+        These quantities are interpretable as:
+
+        <div class="math-block">
+          \[ m = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} w^*{}^\top \Sigma_x \hat{w}\right] \,, q = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_x \hat{w}\right] \,, P = \mathbb{E}_{\mathcal{D}}\left[\frac{1}{d} \hat{w}^\top \Sigma_\delta \hat{w}\right] \]
         </div>
 
         <h2>Implications</h2>
