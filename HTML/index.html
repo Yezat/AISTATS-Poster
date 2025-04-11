@@ -46,11 +46,33 @@
           <img class="plot" src="../Assets/defence_sweep.pdf" alt="Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors">
           <p class="plot-caption">Impact of different defense strategies on generalization \(E_{\text{gen}}\) and boundary \(E_{\text{bnd}}\) errors</p>
         </div>
-        <ul>
-          <li><strong>Defending robust features:</strong> Low \(E_{\text{gen}}\) but high \(E_{\text{bnd}}\)</li>
-          <li><strong>Uniform defense:</strong> Better balance, improves overall \(E_{\text{adv}}\)</li>
-          <li><strong>Defending non-robust features:</strong> Increases \(E_{\text{gen}}\) while decreasing \(E_{\text{bnd}}\)</li>
-        </ul>
+
+        <p><strong>Proposition:</strong></p>
+        <p>Consider the following matrix where \(\varrho\) controls the defence strength:</p>
+        <div class="math-block">
+          \[\Sigma_\delta = \text{blockdiag}((\Delta_1 + \delta_1 \varrho) \mathbb{1}_{d_1}, (\Delta_2 + \delta_2 \varrho) \mathbb{1}_{d_2})\]
+        </div>
+        <p>Assume \(\psi_1 > \psi_2\), \(\Delta_2 \psi_1 \geq \Delta_1 \psi_2\) and \(\Upsilon_i = 1\).</p>
+
+        <p><strong>Key Finding:</strong> In the limit \(\alpha \to \infty\), there exists a threshold \(\kappa > 0\) such that \( \forall \delta_1 > \kappa\) and \(\delta_2 = -\delta_1\):</p>
+
+        <div class="math-block">
+          \[\begin{aligned}
+            E_\text{bnd}(\varrho) &= E_\text{bnd}^0 + E_\text{bnd}^1 \varrho + \mathcal{O}(\varrho^2) \\
+            E_\text{gen}(\varrho) &= E_\text{gen}^0 + E_\text{gen}^1 \varrho + \mathcal{O}(\varrho^2)
+          \end{aligned}\]
+        </div>
+
+        <p>where \(E_\text{gen}^1 > 0\), \(E_\text{bnd}^1 < 0\) and \(E_\text{bnd}^0, E_\text{gen}^0\) errors at \(\varrho = 0\)</p>
+
+        <p><strong>Improvement Condition:</strong> This improves \(E_\text{adv}\) at order \(\varrho\) iff</p>
+        <div class="math-block">
+          \[\frac{\varepsilon_{g}}{\sqrt{2}} \text{erfc}\left(-\frac{\vartheta_0 u_0 \varepsilon_{g}}{\sqrt{2-2 \vartheta_0^2}}\right) < \frac{\exp\left(-\frac{\vartheta_0^2 u_0^2 \varepsilon_{g}^2}{2(1-\vartheta_0^2)}\right)}{\sqrt{\pi}\sqrt{1-\vartheta_0^2}}\]
+        </div>
+
+        <p>where \(\vartheta_0 = m_0/\sqrt{\rho q_0}\) and \(u_0 = \sqrt{A_0}/\sqrt{q_0}\) are the solution at \(\varrho = 0\).</p>
+        
+        <p><em>Note: This condition is always satisfied for sufficiently small \(\varepsilon_{g}\).</em></p>
       </div>
 
       <div class="section">
