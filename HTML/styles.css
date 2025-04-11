@@ -66,6 +66,31 @@ body {
   /* height: fit-content; */
 }
 
+/* Shading options for sections */
+.section.shade-light {
+  background: #f8f9fa;
+}
+
+.section.shade-medium {
+  background: #e9ecef;
+}
+
+.section.shade-dark {
+  background: #dee2e6;
+}
+
+.section.shade-blue {
+  background: #e7f5ff;
+}
+
+.section.shade-green {
+  background: #e9faf2;
+}
+
+.section.shade-yellow {
+  background: #fff9db;
+}
+
 .subsection-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
