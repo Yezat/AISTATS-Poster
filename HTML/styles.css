@@ -14,7 +14,7 @@
   --font-size-section-subheading: 28pt;
   --font-size-math: var(--font-size-medium);
   --font-size-caption: 22pt;
-  --font-size-credits: 56pt;
+  --font-size-credits: 48pt;
 }
 
 @page {
@@ -189,7 +189,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 30px;
   background-color: #003366;
 }
 
@@ -210,8 +210,8 @@ body {
 }
 
 .qr-code img {
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 260px;
   background: white;
   padding: 15px;
   border-radius: 4px;
@@ -220,7 +220,7 @@ body {
 /* Create a container for the logos */
 .logo-container {
   display: flex;
-  align-items: center;
+  align-items: right;
   margin-left: auto;
 }
 
@@ -234,15 +234,16 @@ body {
 }
 
 .logo img {
-  max-height: 300px;
+  max-height: 260px;
   width: auto;
 }
 
 .content-box {
   grid-row: 2;
   padding-top: 0;
-  margin-right: 20mm;
-  margin-left: 20mm;
+  margin-right: 10mm;
+  margin-left: 10mm;
+  margin-bottom: 5mm;
 }
 
 .content-box h1 {
@@ -254,7 +255,7 @@ body {
 }
 
 .main-content {
-  grid-row: 2;
+  grid-row: 3;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10mm 10mm;
@@ -262,6 +263,10 @@ body {
   width: 100%;
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
+}
+
+.long {
+  grid-row: span 2;
 }
 
 .plot-container {
