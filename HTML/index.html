@@ -151,10 +151,10 @@
         <div class="subsection-container">
           <div class="subsection">
             <p><strong>Proposition:</strong></p>
-            <p>Consider the following matrix where \(\varrho\) controls the defence strength \(\Sigma_\delta = \text{blockdiag}((\Delta_1 + \delta_1 \varrho) \mathbb{1}_{d_1}, (\Delta_2 + \delta_2 \varrho) \mathbb{1}_{d_2})\)</p>
-            <p>Assume \(\psi_1 > \psi_2\), \(\Delta_2 \psi_1 \geq \Delta_1 \psi_2\) and \(\Upsilon_i = 1\).</p>
+            <p>Assume two equally useful features, then defend the non-robust features more strongly</p>
 
-            <p><strong>Key Finding:</strong> In the limit \(\alpha \to \infty\), there exists a threshold \(\kappa > 0\) such that \( \forall \delta_1 > \kappa\) and \(\delta_2 = -\delta_1\):</p>
+            <p><strong>Key Finding:</strong></p>
+            <p>Generalisation error increases linearly in defense strength and boundary error decreases linearly</p>
             <div class="math-block">
               \[\begin{aligned}
                 E_\text{bnd}(\varrho) &= E_\text{bnd}^0 + E_\text{bnd}^1 \varrho + \mathcal{O}(\varrho^2) \\
@@ -165,14 +165,14 @@
           </div>
           
           <div class="subsection">
-            <p><strong>Improvement Condition:</strong> This improves \(E_\text{adv}\) at order \(\varrho\) iff</p>
+            <p>This improves \(E_\text{adv}\) at order \(\varrho\) iff</p>
             <div class="math-block">
               \[\frac{\varepsilon_{g}}{\sqrt{2}} \text{erfc}\left(-\frac{\vartheta_0 u_0 \varepsilon_{g}}{\sqrt{2-2 \vartheta_0^2}}\right) < \frac{\exp\left(-\frac{\vartheta_0^2 u_0^2 \varepsilon_{g}^2}{2(1-\vartheta_0^2)}\right)}{\sqrt{\pi}\sqrt{1-\vartheta_0^2}}\]
             </div>
 
             <p>where \(\vartheta_0 = m_0/\sqrt{\rho q_0}\) and \(u_0 = \sqrt{A_0}/\sqrt{q_0}\) are the solution at \(\varrho = 0\).</p>
             
-            <p><em>Note: This condition is always satisfied for sufficiently small \(\varepsilon_{g}\).</em></p>
+            <p><em>Defending the non-robust sub-space can improve robustness without hurting accuracy, especially under mild attacks</em></p>
           </div>
         </div>
       </div>
