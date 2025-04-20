@@ -38,6 +38,15 @@
             <p class="plot-caption">Tsilivis & Kempe (2022) - Distinction of useful and robust features</p>
           </div>
         </div>
+        <p>In our setting, we define usefulness and robustness by</p>
+        <div class="math-block">
+          \begin{align}
+            \mathcal{U}_{\omega^*} &= \frac{1}{\sqrt{d}} \mathbb{E}_{x, y}[y {\omega^*}^\top x ] = \sqrt{\frac{2}{\pi}} \frac{\rho}{\sqrt{\rho + \tau^2}} \,,  \\
+            \mathcal{R}_{\omega^*} &= \frac{1}{\sqrt{d}} \mathbb{E}_{x, y}[
+                \inf_{\|\delta\|_{\Sigma_\upsilon^{-1}}  \leq \varepsilon_g} y {\omega^*}^\top ( x + \delta)
+            ] =  \mathcal{U}_{\omega^*} - \frac{\varepsilon_g}{\sqrt{d}} \mathbb{E}[\sqrt{\omega^\top \Sigma_\upsilon \omega}] \,. .
+        \end{align}
+        </div>
       </div>
 
       <div class="section span-2">
@@ -83,13 +92,13 @@
         <p><strong>Binary Classification Setting:</strong></p>
         <ul>
           <li>Training data \(\mathcal{D} = \{(x_i, y_i)\}_{i=1}^{n} \in \mathbb{R}^{d} \times \{-1,+1\}\)</li>
-          <li>Student \(\hat{w}\) and teacher \(w^*\) vectors in \(\mathbb{R}^d\)</li>
+          <li>Student \(\hat{\omega}\) and teacher \(\omega^*\) vectors in \(\mathbb{R}^d\)</li>
           <li>High-dimensional limit: \(d,n \to \infty\) with fixed \(\alpha = n/d\)</li>
           <li>Structured data with block features: covariance matrices \(\Sigma_x, \Sigma_\delta, \Sigma_\upsilon, \Sigma_\theta\) are block diagonal with \(k\) blocks of sizes \(d_1, \dots, d_k\)</li>
         </ul>
 
         <div class="math-block">
-          \[ \sum_{i = 1}^{n} \max_{ \|\delta_i\|_{\Sigma_\delta^{-1}} \leq \varepsilon_t } g \left(y_i \frac{w^\top (x_i + \delta_i)}{\sqrt{d}}\right) + r(w) \]
+          \[ \sum_{i = 1}^{n} \max_{ \|\delta_i\|_{\Sigma_\delta^{-1}} \leq \varepsilon_t } g \left(y_i \frac{\omega^\top (x_i + \delta_i)}{\sqrt{d}}\right) + r(\omega) \]
         </div>
 
         <p><strong>Metrics of Interest:</strong></p>
