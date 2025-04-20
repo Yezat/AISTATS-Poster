@@ -56,7 +56,7 @@ body {
 
 .section {
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: var(--font-size-section);
